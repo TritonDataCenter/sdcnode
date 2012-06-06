@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+# Build a single node from a given JSON object describing
+# build options.
+#
+# Usage:
+#   ./tools/build-a-node BUILD-OPTS BUILD-DIR BUILD-STAMP
+#
+# Example:
+#   ./tools/build-a-node '{"version": "v0.6.18"}' `pwd`/build/nodes/0 master-gcafe0123-20120203T120000Z
+#
+# TODO: document supported build options
+
+#set -o xtrace
+set -o errexit
+set -o pipefail
+
+TOP=$(cd $(dirname $0)/../ >/dev/null; pwd)
+buildOpts=$1
+buildDir=$2
+buildStamp=$3
+
+echo ""
+echo "# Build a node in $buildDir with '$(echo "$buildOpts" | json -o json-0)' opts."
+
+if [[ -d $buildDir ]]; then
+    rm -rf $buildDir
+fi
+mkdir -p $buildDir
+
+cd $TOP/build/src
+version=$(echo "$buildOpts" | json version)
+git checkout $version
+
+configureFlags=$(echo "$buildOpts" | json configure_flags)
+if [[ -z "$configureFlags" ]]; then
+    configureFlags="--with-dtrace --openssl-libpath=/opt/local/lib --openssl-includes=/opt/local/include"
+fi
+./configure $configureFlags --prefix=$buildDir/node
+make
+make install
+
+# package
+buildTag=$(echo "$buildOpts" | json build_tag)
+if [[ -n "$buildTag" ]]; then
+    buildTag=-$buildTag
+fi
+gccVersion=$(gcc --version | head -1 | awk '{print $NF}')
+cd $buildDir
+tar czf sdcnode-$version-gcc$gccVersion$buildTag-$buildStamp.tgz node
+

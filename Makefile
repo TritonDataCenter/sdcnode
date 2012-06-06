@@ -7,48 +7,47 @@
 include ./tools/mk/Makefile.defs
 
 
-include ./build/config.mk
-NODE_COMMITISH ?= $(error config.mk does not define NODE_COMMITISH)
-NODE_CONFIG_FLAGS ?= $(error config.mk does not define NODE_CONFIG_FLAGS)
-
 #
-# Variables
+# Files
 #
-PKG_FILE=sdcnode-$(NODE_COMMITISH)-$(STAMP).tgz
-CLEAN_FILES += build/node $(PKG_FILE)
+CLEAN_FILES += build/nodes bits
 DISTCLEAN_FILES += build
 
 #
 # Repo-specific targets
 #
 .PHONY: all
-all: build/src build/node
+all: build/src nodes bits
 
 build/src:
 	git clone git://github.com/joyent/node.git build/src
-	git checkout $(NODE_COMMITISH)
 
-build/node:
-	cd build/src \
-		&& ./configure $(NODE_CONFIG_FLAGS) --prefix=$(TOP)/build/node \
-		&& $(MAKE) \
-		&& $(MAKE) install
+.PHONY: nodes
+nodes: build/src
+	./tools/build-all-nodes $(TOP)/build/nodes $(STAMP)
 
-.PHONY: pkg
-pkg:
-	cd build && $(TAR) czf $(PKG_FILE)
-
+.PHONY: bits
+bits:
+	rm -rf $(TOP)/bits
+	mkdir -p $(TOP)/bits
+	cp $(TOP)/build/nodes/*/sdcnode-*.tgz $(TOP)/bits
+	
 
 # The "publish" target requires that "BITS_DIR" be defined.
 # Used by Mountain Gorilla.
 .PHONY: publish
-publish: $(BITS_DIR)
+publish: bits $(BITS_DIR)
 	@if [[ -z "$(BITS_DIR)" ]]; then \
 		echo "error: 'BITS_DIR' must be set for 'publish' target"; \
 		exit 1; \
 	fi
 	mkdir -p $(BITS_DIR)/sdcnode
-	cp $(PKG_FILE) $(BITS_DIR)/sdcnode
+	cp $(TOP)/bits/sdcnode-*.tgz $(BITS_DIR)/sdcnode
+
+# Upload bits to stuff
+.PHONY: upload
+upload:
+	./tools/upload-bits $(BRANCH) "" $(TIMESTAMP) stuff@10.2.0.190:builds/sdcnode
 
 .PHONY: dumpvar
 dumpvar:

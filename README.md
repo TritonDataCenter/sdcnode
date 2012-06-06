@@ -22,11 +22,10 @@ each service is crazy. Hence, we need a distro. This is it.
 Building is only supported on smartos. Builds of "sdcnode" only target
 smartos.
 
-To build an sdcnode distro:
+To build all sdcnode distro configurations:
 
     git clone git@git.joyent.com:sdcnode.git
-    ./configure --node=COMMITISH [--node-configure='--with-foo' --build-tag=foo]
-    make release
+    make all
 
 To update the guidelines, edit "docs/index.restdown" and run `make docs`
 to update "docs/index.html".
@@ -47,16 +46,14 @@ review.
 Build products are a tarball of node:
 
     # A typical v0.6 build with the pkgsrc gcc on smartos-1.6.3.
-    sdcnode-v0.6.15-gcc4.6.2-20120604T235421Z.tgz
+    sdcnode-v0.6.15-gcc4.6.2-$STAMP.tgz
 
     # A custom config that statically links openssl, for example.
-    sdcnode-v0.6.15-gcc4.6.2-openssl-20120604T235421Z.tgz
+    sdcnode-v0.6.15-gcc4.6.2-openssl-$STAMP.tgz
 
     # The "foo" here is the build tag: used to distinguish from
     # default configuration builds.
-    sdcnode-v0.6.15-gcc4.6.2-foo-20120604T235421Z.tgz
+    sdcnode-v0.6.15-gcc4.6.2-foo-$STAMP.tgz
 
-TODO: Do we need to specify the install prefix? Don't think so. That is built
-in to "build/node" and we make install to there. I guess node installs are
-relocatable.
+TODO: include the gcc version in build tag
 

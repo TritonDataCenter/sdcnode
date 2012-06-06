@@ -1,0 +1,30 @@
+#!/bin/bash
+#
+# Build all node configurations in "../nodeconfigs.json".
+#
+# Usage:
+#   ./tools/build-all-node BUILD-DIR BUILD-STAMP
+#
+
+#set -o xtrace
+set -o errexit
+set -o pipefail
+
+TOP=$(cd $(dirname $0)/../ >/dev/null; pwd)
+buildDir=$1
+buildStamp=$2
+
+[[ ! -d $buildDir ]] && mkdir -p $buildDir
+
+numConfigs=$(cat $TOP/nodeconfigs.json | json length)
+for (( i=0; i<$numConfigs; i++ ))
+do
+    nodeBuildDir=$buildDir/$i
+    if [[ ! -d $nodeBuildDir ]]; then
+        $TOP/tools/build-a-node "$(cat $TOP/nodeconfigs.json | json $i)" $buildDir/$i $buildStamp
+    else
+        echo "# nodeconfig $i: $nodeBuildDir already exists"
+    fi
+done
+
+
