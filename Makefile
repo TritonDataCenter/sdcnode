@@ -29,9 +29,8 @@ nodes: build/src
 .PHONY: bits
 bits:
 	rm -rf $(TOP)/bits
-	mkdir -p $(TOP)/bits
-	cp $(TOP)/build/nodes/*/sdcnode-*.tgz $(TOP)/bits
-	
+	mkdir -p $(TOP)/bits/sdcnode
+	cp $(TOP)/build/nodes/*/sdcnode-*.tgz $(TOP)/bits/sdcnode
 
 # The "publish" target requires that "BITS_DIR" be defined.
 # Used by Mountain Gorilla.
@@ -42,7 +41,7 @@ publish: bits $(BITS_DIR)
 		exit 1; \
 	fi
 	mkdir -p $(BITS_DIR)/sdcnode
-	cp $(TOP)/bits/sdcnode-*.tgz $(BITS_DIR)/sdcnode
+	cp $(TOP)/bits/sdcnode/sdcnode-*.tgz $(BITS_DIR)/sdcnode
 
 # Upload bits to stuff
 .PHONY: upload
