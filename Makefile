@@ -12,6 +12,9 @@ include ./tools/mk/Makefile.defs
 #
 CLEAN_FILES += build/nodes bits
 DISTCLEAN_FILES += build
+DOC_FILES += index.restdown
+
+
 
 #
 # Repo-specific targets
