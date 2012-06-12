@@ -5,16 +5,9 @@ Browsing: <https://mo.joyent.com/sdcnode>
 Who: Trent Mick
 Docs: <https://mo.joyent.com/docs/sdcnode>
 Tickets/bugs: <https://devhub.joyent.com/jira/browse/RELENG>
+Jenkins: <https://jenkins.joyent.us/job/sdcnode/>
 
-
-# Overview
-
-All SDC services should carry their own node with then for independence.
-(The exception is those that are part of the platform: for which using
-the platform node is fine.) These services need a node (and npm) build.
-They can either build it themselves or get a pre-built one. Having node/npm
-as a git submodule for every repo and re-building node/npm for every build of
-each service is crazy. Hence, we need a distro. This is it.
+SmartOS builds of Node for SDC.
 
 
 # Development
@@ -56,4 +49,3 @@ Build products are a tarball of node:
     sdcnode-v0.6.15-gcc4.6.2-foo-$STAMP.tgz
 
 TODO: include the gcc version in build tag
-
