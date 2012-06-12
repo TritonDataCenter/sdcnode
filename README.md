@@ -36,7 +36,7 @@ review.
 
 # Releases
 
-Build products are a tarball of node:
+Build products are a tarball of node. Some examples of what you might get:
 
     # A typical v0.6 build with the pkgsrc gcc on smartos-1.6.3.
     sdcnode-v0.6.15-gcc4.6.2-$STAMP.tgz
@@ -48,4 +48,4 @@ Build products are a tarball of node:
     # default configuration builds.
     sdcnode-v0.6.15-gcc4.6.2-foo-$STAMP.tgz
 
-TODO: include the gcc version in build tag
+*What* build configurations are built is defined in "nodeconfigs.json".
