@@ -1,6 +1,6 @@
 # SDC Node Builds
 
-Repository: <git@git.joyent.com:sdcnode.git>
+Repository: git@git.joyent.com:sdcnode.git
 Browsing: <https://mo.joyent.com/sdcnode>
 Who: Trent Mick
 Docs: <https://mo.joyent.com/docs/sdcnode>
