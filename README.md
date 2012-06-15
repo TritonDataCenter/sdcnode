@@ -30,8 +30,21 @@ review.
 # Node Build Details
 
 - only target SmartOS
-- by default we link against openssl at /opt/local
 - by default we configure '--with-dtrace'
+
+
+
+# Dev Notes
+
+Not currently using builds that statically link in openssl (see TOOLS-130),
+but here is how you would do one:
+
+    {
+        "comment": "Statically links OpenSSL.",
+        "version": "v0.7.10",
+        "configure_flags": "--with-dtrace",
+        "build_tag": "simple"
+    },
 
 
 # Releases

@@ -27,7 +27,8 @@ buildDir=$2
 buildStamp=$3
 
 echo ""
-echo "# Build a node in $buildDir with '$(echo "$buildOpts" | json -o json-0)' opts."
+echo "# Build a node in $buildDir with this config:"
+echo "$buildOpts" | json
 
 if [[ -d $buildDir ]]; then
     rm -rf $buildDir
@@ -40,7 +41,7 @@ git checkout $version
 
 configureFlags=$(echo "$buildOpts" | json configure_flags)
 if [[ -z "$configureFlags" ]]; then
-    configureFlags="--with-dtrace --openssl-libpath=/opt/local/lib --openssl-includes=/opt/local/include"
+    configureFlags="--with-dtrace"
 fi
 buildEnv=$(echo "$buildOpts" | json build_env)
 eval "export $buildEnv"
@@ -56,4 +57,3 @@ fi
 gccVersion=$(gcc --version | head -1 | awk '{print $NF}')
 cd $buildDir
 tar czf sdcnode-$version-gcc$gccVersion$buildTag-$buildStamp.tgz node
-

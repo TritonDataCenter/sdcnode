@@ -1,34 +1,38 @@
 [
     {
-        "version": "v0.7.10",
-        "configure_flags": "--with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib",
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
+        "version": "v0.7.11",
+        "configure_flags": "--with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
-        "build_tag": "ldenv"
+        "build_tag": "zone"
     },
     {
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.6.19",
-        "configure_flags": "--with-dtrace --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib",
+        "configure_flags": "--with-dtrace --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
-        "build_tag": "ldenv"
+        "build_tag": "zone"
     },
     {
-        "version": "v0.7.10",
-        "configure_flags": "--with-dtrace",
-        "build_tag": "simple"
+        "comment": "For use by agents in the GZ. Dynamically link OpenSSL to /lib. TODO: not sure about OpenSSL and zlib headers.",
+        "version": "v0.7.11",
+        "configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --shared-zlib --shared-zlib-libpath=/lib",
+        "build_tag": "gz"
     },
     {
+        "comment": "For use by agents in the GZ. Dynamically link OpenSSL to /lib. TODO: not sure about OpenSSL and zlib headers.",
+        "version": "v0.6.19",
+        "configure_flags": "--with-dtrace --openssl-libpath=/lib --shared-zlib --shared-zlib-libpath=/lib",
+        "build_tag": "gz"
+    },
+    {
+        "comment": "Deprecated. Only here for transition away from this.",
         "version": "v0.6.19",
         "configure_flags": "--with-dtrace",
-        "build_tag": "simple"
     },
     {
-        "version": "v0.7.10",
-        "configure_flags": "--with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib",
-        "build_tag": "pkgsrcssl"
-    },
-    {
-        "version": "v0.6.19",
-        "configure_flags": "--with-dtrace --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib",
-        "build_tag": "pkgsrcssl"
+        "comment": "Deprecated. Only here for transition away from this.",
+        "version": "v0.6.18",
+        "configure_flags": "--with-dtrace",
     }
 ]
