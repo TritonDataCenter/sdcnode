@@ -14,15 +14,17 @@
         "build_tag": "zone"
     },
     {
-        "comment": "For use by agents in the GZ. Dynamically link OpenSSL to /lib. TODO: not sure about OpenSSL and zlib headers.",
+        "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294.",
         "version": "v0.7.11",
-        "configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --shared-zlib --shared-zlib-libpath=/lib",
+        "configure_flags": "--with-dtrace",
+        "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
         "build_tag": "gz"
     },
     {
-        "comment": "For use by agents in the GZ. Dynamically link OpenSSL to /lib. TODO: not sure about OpenSSL and zlib headers.",
+        "comment": "For use by agents in the GZ. Statically link to OpenSSL *for now* until OS-1294. Statically link zlib because of a node 0.6 build bug.",
         "version": "v0.6.19",
-        "configure_flags": "--with-dtrace --openssl-libpath=/lib --shared-zlib --shared-zlib-libpath=/lib",
+        "configure_flags": "--with-dtrace",
+        "FUTURE_configure_flags": "--with-dtrace --openssl-libpath=/lib --openssl-includes=???",
         "build_tag": "gz"
     },
     {
