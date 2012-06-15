@@ -28,11 +28,11 @@
     {
         "comment": "Deprecated. Only here for transition away from this.",
         "version": "v0.6.19",
-        "configure_flags": "--with-dtrace",
+        "configure_flags": "--with-dtrace"
     },
     {
         "comment": "Deprecated. Only here for transition away from this.",
         "version": "v0.6.18",
-        "configure_flags": "--with-dtrace",
+        "configure_flags": "--with-dtrace"
     }
 ]
