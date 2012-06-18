@@ -14,6 +14,10 @@ CLEAN_FILES += build/nodes bits
 DISTCLEAN_FILES += build
 DOC_FILES += index.restdown
 
+ifeq ($(UPLOAD_LOCATION),)
+	UPLOAD_LOCATION=stuff@stuff.joyent.us:builds
+endif
+
 
 
 #
@@ -49,7 +53,7 @@ publish: bits $(BITS_DIR)
 # Upload bits to stuff
 .PHONY: upload
 upload:
-	./tools/upload-bits $(BRANCH) "" $(TIMESTAMP) stuff@10.2.0.190:builds/sdcnode
+	./tools/upload-bits "$(BRANCH)" "" "$(TIMESTAMP)" $(UPLOAD_LOCATION)/sdcnode
 
 .PHONY: dumpvar
 dumpvar:
