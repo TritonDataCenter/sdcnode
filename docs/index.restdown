@@ -27,3 +27,7 @@ project's inception.
 The authority is <https://mo.joyent.com/sdcnode/blob/master/nodeconfigs.json>.
 Currently sdcnode only includes node build configurations required by
 core SmartDataCenter services.
+
+||**Build Tag**||**Description**||
+||gz||Intended for services running in the global zone. Currently this statically links in OpenSSL and zlib, but the intention is to dynamically link with platform libs (see [TOOLS-130](https://devhub.joyent.com/jira/browse/TOOLS-130) for details).||
+||zone||Intended for services running in a zone. It dynamically links to pkgsrc's OpenSSL and zlib in /opt/local.||
