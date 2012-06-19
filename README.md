@@ -27,16 +27,10 @@ Before commiting/pushing run `make prepush` and, if possible, get a code
 review.
 
 
-# Node Build Details
-
-- only target SmartOS
-- by default we configure '--with-dtrace'
-
-
-
 # Dev Notes
 
-Not currently using builds that statically link in openssl (see TOOLS-130),
+The configuration for builds is controlled by "nodeconfig.json".  We are not
+currently using builds that statically link in openssl (see TOOLS-130),
 but here is how you would do one:
 
     {
@@ -47,18 +41,3 @@ but here is how you would do one:
     },
 
 
-# Releases
-
-Build products are a tarball of node. Some examples of what you might get:
-
-    # A typical v0.6 build with the pkgsrc gcc on smartos-1.6.3.
-    sdcnode-v0.6.15-gcc4.6.2-$STAMP.tgz
-
-    # A custom config that statically links openssl, for example.
-    sdcnode-v0.6.15-gcc4.6.2-openssl-$STAMP.tgz
-
-    # The "foo" here is the build tag: used to distinguish from
-    # default configuration builds.
-    sdcnode-v0.6.15-gcc4.6.2-foo-$STAMP.tgz
-
-*What* build configurations are built is defined in "nodeconfigs.json".
