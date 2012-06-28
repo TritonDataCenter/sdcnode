@@ -29,8 +29,13 @@ all: build/src nodes bits
 build/src:
 	git clone git://github.com/joyent/node.git build/src
 
+.PHONY: nodesrc
+nodesrc: | build/src
+	cd build/src && git checkout master \
+		&& git fetch origin && git pull --rebase origin master
+
 .PHONY: nodes
-nodes: build/src
+nodes: nodesrc
 	./tools/build-all-nodes $(TOP)/build/nodes $(STAMP)
 
 .PHONY: bits

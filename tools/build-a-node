@@ -13,6 +13,8 @@
 # - version:
 # - configure_flags:
 # - build_env:
+# - npm_version: Optional. A commitish for a special version of npm to pull in
+#   and replace the one include with the given node version.
 # - build_tag:
 
 
@@ -35,9 +37,17 @@ if [[ -d $buildDir ]]; then
 fi
 mkdir -p $buildDir
 
-cd $TOP/build/src
+cp -PR $TOP/build/src $buildDir/src
+cd $buildDir/src
 version=$(echo "$buildOpts" | json version)
 git checkout $version
+
+npmVersion=$(echo "$buildOpts" | json npm_version)
+if [[ -n "$npmVersion" ]]; then
+    rm -rf deps/npm
+    git clone git://github.com/isaacs/npm.git deps/npm
+    (cd deps/npm && git checkout $npmVersion)
+fi
 
 configureFlags=$(echo "$buildOpts" | json configure_flags)
 if [[ -z "$configureFlags" ]]; then
