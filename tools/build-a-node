@@ -13,9 +13,12 @@
 # - version:
 # - configure_flags:
 # - build_env:
+# - build_tag:
 # - npm_version: Optional. A commitish for a special version of npm to pull in
 #   and replace the one include with the given node version.
-# - build_tag:
+# - npm_repo: Optional. If `npm_version` is used, this can be set to an alternative
+#   git repo (e.g. an npm fork). This is only intended for pre-release experimental
+#   builds. The default repo URL is "git://github.com/isaacs/npm.git"
 
 
 export PS4='${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
@@ -44,8 +47,13 @@ git checkout $version
 
 npmVersion=$(echo "$buildOpts" | json npm_version)
 if [[ -n "$npmVersion" ]]; then
+    npmRepo=$(echo "$buildOpts" | json npm_repo)
     rm -rf deps/npm
-    git clone git://github.com/isaacs/npm.git deps/npm
+    if [[ -n "$npmRepo" ]]; then
+        git clone $npmRepo deps/npm
+    else
+        git clone git://github.com/isaacs/npm.git deps/npm
+    fi
     (cd deps/npm && git checkout $npmVersion)
 fi
 
