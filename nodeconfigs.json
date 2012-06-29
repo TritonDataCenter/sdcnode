@@ -1,12 +1,10 @@
 [
     {
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
-        "version": "v0.8.0",
+        "version": "840456a",
         "configure_flags": "--with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
-        "npm_repo": "git://github.com/trentm/npm.git",
-        "npm_version": "b2a53ac",
-        "build_tag": "npmretry"
+        "build_tag": "pre081"
     },
     {
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
