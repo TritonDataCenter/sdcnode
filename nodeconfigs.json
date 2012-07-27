@@ -1,5 +1,11 @@
 [
     {
+        "comment": "For use by manatee wanting a 32-bit node build NOT using the pkgsrc libs",
+        "version": "v0.8.4",
+        "configure_flags": "--with-dtrace",
+        "build_tag": "manatee"
+    },
+    {
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.8.4",
         "configure_flags": "--with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
@@ -23,13 +29,6 @@
     {
         "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v0.8.4",
-        "configure_flags": "--with-dtrace",
-        "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
-        "build_tag": "gz"
-    },
-    {
-        "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
-        "version": "v0.8.2",
         "configure_flags": "--with-dtrace",
         "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
         "build_tag": "gz"
