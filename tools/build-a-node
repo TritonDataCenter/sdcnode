@@ -64,8 +64,8 @@ fi
 buildEnv=$(echo "$buildOpts" | json build_env)
 eval "export $buildEnv"
 ./configure $configureFlags --prefix=$buildDir/node
-make
-make install
+make V=1
+make V=1 install
 
 # package
 buildTag=$(echo "$buildOpts" | json build_tag)
