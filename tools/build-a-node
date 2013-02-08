@@ -14,6 +14,8 @@
 # - configure_flags:
 # - build_env:
 # - build_tag:
+# - patch_files: Optional. A list of paths (relative to the project root)
+#   of patch files to apply.
 # - npm_version: Optional. A commitish for a special version of npm to pull in
 #   and replace the one include with the given node version.
 # - npm_repo: Optional. If `npm_version` is used, this can be set to an alternative
@@ -21,7 +23,7 @@
 #   builds. The default repo URL is "git://github.com/isaacs/npm.git"
 
 
-export PS4='${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+export PS4='[\D{%FT%TZ}] ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 set -o xtrace
 set -o errexit
 set -o pipefail
@@ -55,6 +57,16 @@ if [[ -n "$npmVersion" ]]; then
         git clone git://github.com/isaacs/npm.git deps/npm
     fi
     (cd deps/npm && git checkout $npmVersion)
+fi
+
+# Patching
+patchFiles=$(echo "$buildOpts" | json patch_files)
+if [[ -n "$patchFiles" ]]; then
+    numPatchFiles=$(echo "$patchFiles" | json length)
+    for (( i=0; i<$numPatchFiles; i++ )); do
+        patchFile=$(echo "$patchFiles" | json $i)
+        patch -p1 <$TOP/$patchFile
+    done
 fi
 
 configureFlags=$(echo "$buildOpts" | json configure_flags)
