@@ -1,6 +1,14 @@
 [
     {
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
+        "version": "v0.8.21",
+        "patch_files": ["patches/node-5feedc5-socket-getFD.patch"],
+        "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
+        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
+        "build_tag": "zone"
+    },
+    {
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.8.20",
         "patch_files": ["patches/node-5feedc5-socket-getFD.patch"],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
@@ -37,6 +45,14 @@
         "build_tag": "zone"
     },
 
+    {
+        "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v0.8.21",
+        "patch_files": ["patches/node-5feedc5-socket-getFD.patch"],
+        "configure_flags": "--dest-cpu=ia32 --with-dtrace",
+        "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
+        "build_tag": "gz"
+    },
     {
         "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v0.8.20",
