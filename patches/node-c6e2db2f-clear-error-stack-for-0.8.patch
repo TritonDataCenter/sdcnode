@@ -1,0 +1,37 @@
+commit c6e2db2f14d98c6421401dea70f57333898ce782
+Author: Ben Noordhuis <info@bnoordhuis.nl>
+Date:   Wed Feb 27 23:31:38 2013 +0100
+
+    crypto: clear error stack
+
+    Clear OpenSSL's error stack on return from Connection::HandleSSLError().
+    This stops stale errors from popping up later in the lifecycle of the
+    SSL connection where they would cause spurious failures.
+
+    This commit causes a 1-2% performance regression on `make bench-tls`.
+    We'll address that in follow-up commits if possible but let's ensure
+    correctness first.
+
+    Fixes #4771.
+
+diff --git a/src/node_crypto.cc b/src/node_crypto.cc
+index d3a7dcd..f874b88 100644
+--- a/src/node_crypto.cc
++++ b/src/node_crypto.cc
+@@ -702,6 +702,16 @@ int Connection::HandleBIOError(BIO *bio, const char* func, int rv) {
+
+
+ int Connection::HandleSSLError(const char* func, int rv) {
++  // Forcibly clear OpenSSL's error stack on return. This stops stale errors
++  // from popping up later in the lifecycle of the SSL connection where they
++  // would cause spurious failures. It's a rather blunt method, though.
++  // ERR_clear_error() isn't necessarily cheap either.
++  struct ClearErrorOnReturn {
++    ~ClearErrorOnReturn() { ERR_clear_error(); }
++  };
++  ClearErrorOnReturn clear_error_on_return;
++  (void) &clear_error_on_return;  // Silence unused variable warning.
++
+   if (rv >= 0) return rv;
+
+   int err = SSL_get_error(ssl_, rv);

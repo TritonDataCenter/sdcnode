@@ -1,0 +1,12 @@
+diff --git a/src/node_crypto.cc b/src/node_crypto.cc
+index d3a7dcd..57904e1 100644
+--- a/src/node_crypto.cc
++++ b/src/node_crypto.cc
+@@ -1327,7 +1327,6 @@ Handle<Value> Connection::GetPeerCertificate(const Arguments& args) {
+     EVP_PKEY *pkey = NULL;
+     RSA *rsa = NULL;
+     if( NULL != (pkey = X509_get_pubkey(peer_cert))
+-        && EVP_PKEY_RSA == EVP_PKEY_id(pkey)
+         && NULL != (rsa = EVP_PKEY_get1_RSA(pkey))) {
+         BN_print(bio, rsa->n);
+         BIO_get_mem_ptr(bio, &mem);
