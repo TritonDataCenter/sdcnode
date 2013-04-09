@@ -15,7 +15,7 @@ DISTCLEAN_FILES += build
 DOC_FILES += index.restdown
 
 ifeq ($(UPLOAD_LOCATION),)
-	UPLOAD_LOCATION=stuff@stuff.joyent.us:builds
+	UPLOAD_LOCATION=bits@bits.joyent.us:builds
 endif
 
 
