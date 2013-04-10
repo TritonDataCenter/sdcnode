@@ -91,6 +91,9 @@
     {
         "comment": "For use by agents in the GZ. Statically link to OpenSSL *for now* until OS-1294/TOOLS-130. Statically link zlib because of a node 0.6 build bug.",
         "version": "v0.6.19",
+        "patch_files": [
+            "patches/node-v0.6-build-sans-fake-subset.patch"
+        ],
         "configure_flags": "--with-dtrace",
         "FUTURE_configure_flags": "--with-dtrace --openssl-libpath=/lib --openssl-includes=???",
         "build_tag": "gz"
