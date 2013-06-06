@@ -81,6 +81,17 @@
 
     {
         "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v0.8.24",
+        "patch_files": [
+            "patches/node-5feedc5-socket-getFD.patch",
+            "patches/npm-54e68d4-shrinkwrap-gitosis-urls.patch"
+        ],
+        "configure_flags": "--dest-cpu=ia32 --with-dtrace",
+        "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
+        "build_tag": "gz"
+    },
+    {
+        "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v0.8.23",
         "patch_files": ["patches/node-5feedc5-socket-getFD.patch"],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace",
