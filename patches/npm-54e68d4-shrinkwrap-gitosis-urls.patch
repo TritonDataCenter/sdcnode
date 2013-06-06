@@ -1,0 +1,28 @@
+commit 54e68d429e1d01e89b2077d0e579d9d7b87f241e
+Author: isaacs <i@izs.me>
+Date:   Thu Jun 6 14:14:26 2013 -0700
+
+    Don't put a / on resolved gitosis-style git urls
+    
+    Fixes #3224
+
+diff --git a/deps/npm/lib/cache.js b/deps/npm/lib/cache.js
+index 90d8226..7a658a7 100644
+--- a/deps/npm/lib/cache.js
++++ b/deps/npm/lib/cache.js
+@@ -520,6 +520,15 @@ function archiveGitRemote (p, u, co, origUrl, cb) {
+       var parsed = url.parse(origUrl)
+       parsed.hash = stdout
+       resolved = url.format(parsed)
++
++      // https://github.com/isaacs/npm/issues/3224
++      // node incorrectly sticks a / at the start of the path
++      // We know that the host won't change, so split and detect this
++      var spo = origUrl.split(parsed.host)
++      var spr = resolved.split(parsed.host)
++      if (spo[1].charAt(0) === ':' && spr[1].charAt(0) === '/')
++        resolved = spr[0] + parsed.host + spr[1].slice(1)
++
+       log.verbose('resolved git url', resolved)
+       next()
+     })

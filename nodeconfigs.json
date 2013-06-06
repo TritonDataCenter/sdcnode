@@ -13,7 +13,8 @@
         "patch_files": [
             "patches/node-5feedc5-socket-getFD.patch",
             "patches/node-c6e2db2f-clear-error-stack-for-0.8.patch",
-            "patches/node-reverse-2c41a80-crypto-check-key-type.patch"
+            "patches/node-reverse-2c41a80-crypto-check-key-type.patch",
+            "patches/npm-54e68d4-shrinkwrap-gitosis-urls.patch"
         ],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
@@ -25,7 +26,8 @@
         "patch_files": [
             "patches/node-5feedc5-socket-getFD.patch",
             "patches/node-c6e2db2f-clear-error-stack-for-0.8.patch",
-            "patches/node-reverse-2c41a80-crypto-check-key-type.patch"
+            "patches/node-reverse-2c41a80-crypto-check-key-type.patch",
+            "patches/npm-54e68d4-shrinkwrap-gitosis-urls.patch"
         ],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
