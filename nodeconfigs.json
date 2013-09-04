@@ -1,6 +1,13 @@
 [
     {
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
+        "version": "v0.10.18",
+        "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
+        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
+        "build_tag": "zone"
+    },
+    {
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.15",
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
