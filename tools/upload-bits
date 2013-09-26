@@ -1,7 +1,8 @@
 #!/bin/bash
 # vi: expandtab sw=4 ts=4
 #
-# Upload (possibly parts of) the bits dir.
+# Upload the sdcnode bits in a pattern somewhat conforming to the "BITS_DIR"
+# layout spec'd by mountain-gorilla (MG).
 #
 
 if [ "$TRACE" != "" ]; then
@@ -109,7 +110,8 @@ rsync -e "$SSH" -av $BITS_DIR/ $UPLOAD_SERVER:$UPLOAD_BASE_LOCALDIR/.$upload_sub
 $SSH $UPLOAD_SERVER mv $UPLOAD_BASE_LOCALDIR/.$upload_subdir/ $UPLOAD_BASE_LOCALDIR/$upload_subdir/
 $SSH $UPLOAD_SERVER "(cd $UPLOAD_BASE_LOCALDIR && rm -f $UPLOAD_BRANCH-latest && ln -s $upload_subdir $UPLOAD_BRANCH-latest)"
 
-# Special note for bits.joyent.us.
+
+# Special convenience note for bits.joyent.us.
 if [[ "$UPLOAD_SERVER" == "bits@bits.joyent.us" ]]; then
     echo "Uploaded to <https://bits.joyent.us/$UPLOAD_BASE_LOCALDIR/$upload_subdir/>."
 fi
