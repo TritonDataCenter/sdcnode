@@ -3,7 +3,10 @@
 # Build all node configurations in "../nodeconfigs.json".
 #
 # Usage:
-#   ./tools/build-all-node BUILD-DIR BUILD-STAMP
+#   ./tools/build-all-nodes BUILD-DIR BUILD-STAMP [FILTER]
+#
+# where "FILTER" is a filter used by 'json -c FILTER' on the nodeconfigs.json
+# to build.
 #
 
 #set -o xtrace
@@ -13,17 +16,25 @@ set -o pipefail
 TOP=$(cd $(dirname $0)/../ >/dev/null; pwd)
 buildDir=$1
 buildStamp=$2
+filter=$3
 
 [[ ! -d $buildDir ]] && mkdir -p $buildDir
 
-numConfigs=$(cat $TOP/nodeconfigs.json | json length)
+configs=$(cat $TOP/nodeconfigs.json)
+if [[ -n "$filter" ]]; then
+    configs=$(echo "$configs" | json -c "$filter")
+fi
+
+numConfigs=$(echo "$configs" | json length)
 for (( i=0; i<$numConfigs; i++ ))
 do
-    nodeBuildDir=$buildDir/$i
+    nodeConfig=$(echo "$configs" | json $i)
+    nodeName=$(echo "$nodeConfig" | json version)-$(echo "$nodeConfig" | json build_tag) 
+    nodeBuildDir=$buildDir/$nodeName
     if [[ ! -d $nodeBuildDir ]]; then
-        $TOP/tools/build-a-node "$(cat $TOP/nodeconfigs.json | json $i)" $buildDir/$i $buildStamp
+        $TOP/tools/build-a-node "$nodeConfig" $nodeBuildDir $buildStamp
     else
-        echo "# nodeconfig $i: $nodeBuildDir already exists"
+        echo "# nodeconfig $nodeName: $nodeBuildDir already exists"
     fi
 done
 

@@ -18,6 +18,7 @@ ifeq ($(UPLOAD_LOCATION),)
 	UPLOAD_LOCATION=bits@bits.joyent.us:builds
 endif
 
+HOST_IMAGE=$(shell mdata-get sdc:image_uuid)
 
 
 #
@@ -27,7 +28,7 @@ endif
 all: build/src nodes bits
 
 build/src:
-	git clone git://github.com/joyent/node.git build/src
+	git clone https://github.com/joyent/node.git build/src
 
 .PHONY: nodesrc
 nodesrc: | build/src
@@ -36,7 +37,7 @@ nodesrc: | build/src
 
 .PHONY: nodes
 nodes: nodesrc
-	./tools/build-all-nodes $(TOP)/build/nodes $(STAMP)
+	./tools/build-all-nodes $(TOP)/build/nodes $(STAMP) "this.image=='$(HOST_IMAGE)'"
 
 .PHONY: bits
 bits:
@@ -44,21 +45,10 @@ bits:
 	mkdir -p $(TOP)/bits/sdcnode
 	cp $(TOP)/build/nodes/*/sdcnode-*.tgz $(TOP)/bits/sdcnode
 
-# The "publish" target requires that "BITS_DIR" be defined.
-# Used by Mountain Gorilla.
-.PHONY: publish
-publish: bits $(BITS_DIR)
-	@if [[ -z "$(BITS_DIR)" ]]; then \
-		echo "error: 'BITS_DIR' must be set for 'publish' target"; \
-		exit 1; \
-	fi
-	mkdir -p $(BITS_DIR)/sdcnode
-	cp $(TOP)/bits/sdcnode/sdcnode-*.tgz $(BITS_DIR)/sdcnode
-
 # Upload bits to stuff
 .PHONY: upload
 upload:
-	./tools/upload-bits "$(BRANCH)" "" "$(TIMESTAMP)" $(UPLOAD_LOCATION)/sdcnode
+	./tools/upload-bits "$(BRANCH)" "" "$(TIMESTAMP)" $(UPLOAD_LOCATION)/sdcnode/$(HOST_IMAGE)
 
 .PHONY: dumpvar
 dumpvar:

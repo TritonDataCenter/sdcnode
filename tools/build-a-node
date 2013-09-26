@@ -7,7 +7,9 @@
 #   ./tools/build-a-node BUILD-OPTS BUILD-DIR BUILD-STAMP
 #
 # Example:
-#   ./tools/build-a-node '{"version": "v0.6.18"}' `pwd`/build/nodes/0 master-gcafe0123-20120203T120000Z
+#   ./tools/build-a-node '{"version": "v0.8.23}' \
+#       `pwd`/build/nodes/v0.8.23-zone \
+#       master-20130913T173257Z-gfb34f86
 #
 # TODO: document supported build options
 # - version:
@@ -80,10 +82,10 @@ make V=1 CC=/opt/local/bin/gcc CXX=/opt/local/bin/g++
 make V=1 CC=/opt/local/bin/gcc CXX=/opt/local/bin/g++ install
 
 # package
+imageUuid=$(echo "$buildOpts" | json image)
 buildTag=$(echo "$buildOpts" | json build_tag)
 if [[ -n "$buildTag" ]]; then
     buildTag=-$buildTag
 fi
-gccVersion=$(gcc --version | head -1 | awk '{print $NF}')
 cd $buildDir
-tar czf sdcnode-$version-gcc$gccVersion$buildTag-$buildStamp.tgz node
+tar czf sdcnode-$version$buildTag-$imageUuid-$buildStamp.tgz node
