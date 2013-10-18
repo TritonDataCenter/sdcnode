@@ -4,6 +4,9 @@
         "image": "e6122f7c-1543-11e3-8371-6721d2af210b",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.18",
+        "patch_files": [
+            "patches/gh-6214-v0.10.patch"
+        ],
         "configure_flags": "--dest-cpu=x64 --with-dtrace",
         "build_tag": "zone64"
     },
@@ -13,6 +16,9 @@
         "image": "01b2c898-945f-11e1-a523-af1afbe22822",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.20",
+        "patch_files": [
+            "patches/gh-6214-v0.10.patch"
+        ],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone"
@@ -22,6 +28,9 @@
         "image": "01b2c898-945f-11e1-a523-af1afbe22822",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.18",
+        "patch_files": [
+            "patches/gh-6214-v0.10.patch"
+        ],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone"
@@ -30,6 +39,9 @@
         "image": "01b2c898-945f-11e1-a523-af1afbe22822",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.15",
+        "patch_files": [
+            "patches/gh-6214-v0.10.patch"
+        ],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone"
@@ -38,6 +50,9 @@
         "image": "01b2c898-945f-11e1-a523-af1afbe22822",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.12",
+        "patch_files": [
+            "patches/gh-6214-v0.10.patch"
+        ],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone"
@@ -48,6 +63,7 @@
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.8.25",
         "patch_files": [
+            "patches/gh-6214-v0.8.patch",
             "patches/node-5feedc5-socket-getFD.patch",
             "patches/node-c6e2db2f-clear-error-stack-for-0.8.patch",
             "patches/node-reverse-2c41a80-crypto-check-key-type.patch"
@@ -61,6 +77,7 @@
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.8.24",
         "patch_files": [
+            "patches/gh-6214-v0.8.patch",
             "patches/node-5feedc5-socket-getFD.patch",
             "patches/node-c6e2db2f-clear-error-stack-for-0.8.patch",
             "patches/node-reverse-2c41a80-crypto-check-key-type.patch",
@@ -75,6 +92,7 @@
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.8.23",
         "patch_files": [
+            "patches/gh-6214-v0.8.patch",
             "patches/node-5feedc5-socket-getFD.patch",
             "patches/node-c6e2db2f-clear-error-stack-for-0.8.patch",
             "patches/node-reverse-2c41a80-crypto-check-key-type.patch",
@@ -88,7 +106,10 @@
         "image": "01b2c898-945f-11e1-a523-af1afbe22822",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.8.22",
-        "patch_files": ["patches/node-5feedc5-socket-getFD.patch"],
+        "patch_files": [
+            "patches/gh-6214-v0.8.patch",
+            "patches/node-5feedc5-socket-getFD.patch"
+        ],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone"
@@ -97,7 +118,10 @@
         "image": "01b2c898-945f-11e1-a523-af1afbe22822",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.8.21",
-        "patch_files": ["patches/node-5feedc5-socket-getFD.patch"],
+        "patch_files": [
+            "patches/gh-6214-v0.8.patch",
+            "patches/node-5feedc5-socket-getFD.patch"
+        ],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone"
@@ -106,7 +130,10 @@
         "image": "01b2c898-945f-11e1-a523-af1afbe22822",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.8.20",
-        "patch_files": ["patches/node-5feedc5-socket-getFD.patch"],
+        "patch_files": [
+            "patches/gh-6214-v0.8.patch",
+            "patches/node-5feedc5-socket-getFD.patch"
+        ],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone"
@@ -141,6 +168,9 @@
         "image": "01b2c898-945f-11e1-a523-af1afbe22822",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.20",
+        "patch_files": [
+            "patches/gh-6214-v0.10.patch"
+        ],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace",
         "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
         "build_tag": "gz"
@@ -150,6 +180,7 @@
         "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v0.8.25",
         "patch_files": [
+            "patches/gh-6214-v0.8.patch",
             "patches/node-5feedc5-socket-getFD.patch",
             "patches/node-c6e2db2f-clear-error-stack-for-0.8.patch",
             "patches/node-reverse-2c41a80-crypto-check-key-type.patch"
@@ -163,6 +194,7 @@
         "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v0.8.24",
         "patch_files": [
+            "patches/gh-6214-v0.8.patch",
             "patches/node-5feedc5-socket-getFD.patch",
             "patches/npm-54e68d4-shrinkwrap-gitosis-urls.patch"
         ],
@@ -174,7 +206,10 @@
         "image": "01b2c898-945f-11e1-a523-af1afbe22822",
         "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v0.8.23",
-        "patch_files": ["patches/node-5feedc5-socket-getFD.patch"],
+        "patch_files": [
+            "patches/gh-6214-v0.8.patch",
+            "patches/node-5feedc5-socket-getFD.patch"
+        ],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace",
         "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
         "build_tag": "gz"
@@ -183,7 +218,10 @@
         "image": "01b2c898-945f-11e1-a523-af1afbe22822",
         "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v0.8.20",
-        "patch_files": ["patches/node-5feedc5-socket-getFD.patch"],
+        "patch_files": [
+            "patches/gh-6214-v0.8.patch",
+            "patches/node-5feedc5-socket-getFD.patch"
+        ],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace",
         "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
         "build_tag": "gz"
