@@ -32,7 +32,7 @@
         "// image": "smartos 1.3.6",
         "image": "01b2c898-945f-11e1-a523-af1afbe22822",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
-        "version": "v0.8.25",
+        "version": "v0.8.26",
         "patch_files": [
             "patches/node-5feedc5-socket-getFD.patch",
             "patches/node-reverse-2c41a80-crypto-check-key-type.patch"
@@ -54,6 +54,20 @@
         "// users": "moray, muskie"
     },
 
+    {
+        "// image": "smartos 1.3.6",
+        "image": "01b2c898-945f-11e1-a523-af1afbe22822",
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
+        "version": "v0.8.25",
+        "patch_files": [
+            "patches/node-5feedc5-socket-getFD.patch",
+            "patches/node-reverse-2c41a80-crypto-check-key-type.patch"
+        ],
+        "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
+        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
+        "build_tag": "zone",
+        "// users": "imgapi, workflow"
+    },
     {
         "image": "01b2c898-945f-11e1-a523-af1afbe22822",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
