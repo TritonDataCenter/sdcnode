@@ -1,7 +1,7 @@
 [
     {
-        "// image": "multiarch 13.2.2",
-        "image": "e6122f7c-1543-11e3-8371-6721d2af210b",
+        "// image": "multiarch 13.3.0",
+        "image": "4aec529c-55f9-11e3-868e-a37707fcbe86",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.25",
         "configure_flags": "--dest-cpu=x64 --with-dtrace",
@@ -9,8 +9,8 @@
         "// users": "latest"
     },
     {
-        "// image": "multiarch 13.2.2",
-        "image": "e6122f7c-1543-11e3-8371-6721d2af210b",
+        "// image": "multiarch 13.3.0",
+        "image": "4aec529c-55f9-11e3-868e-a37707fcbe86",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.24",
         "configure_flags": "--dest-cpu=x64 --with-dtrace",
@@ -18,8 +18,8 @@
         "// users": "latest"
     },
     {
-        "// image": "multiarch 13.2.2",
-        "image": "e6122f7c-1543-11e3-8371-6721d2af210b",
+        "// image": "multiarch 13.3.0",
+        "image": "4aec529c-55f9-11e3-868e-a37707fcbe86",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.23",
         "configure_flags": "--dest-cpu=x64 --with-dtrace",
@@ -27,8 +27,8 @@
         "// users": ""
     },
     {
-        "// image": "multiarch 13.2.2",
-        "image": "e6122f7c-1543-11e3-8371-6721d2af210b",
+        "// image": "multiarch 13.3.0",
+        "image": "4aec529c-55f9-11e3-868e-a37707fcbe86",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.22",
         "configure_flags": "--dest-cpu=x64 --with-dtrace",
@@ -36,8 +36,8 @@
         "// users": ""
     },
     {
-        "// image": "multiarch 13.2.2",
-        "image": "e6122f7c-1543-11e3-8371-6721d2af210b",
+        "// image": "multiarch 13.3.0",
+        "image": "4aec529c-55f9-11e3-868e-a37707fcbe86",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.21",
         "configure_flags": "--dest-cpu=x64 --with-dtrace",
@@ -45,8 +45,8 @@
         "// users": "moray muskie fwapi hagfish-watcher"
     },
     {
-        "// image": "multiarch 13.2.2",
-        "image": "e6122f7c-1543-11e3-8371-6721d2af210b",
+        "// image": "multiarch 13.3.0",
+        "image": "4aec529c-55f9-11e3-868e-a37707fcbe86",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.18",
         "configure_flags": "--dest-cpu=x64 --with-dtrace",
