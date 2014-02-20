@@ -1,15 +1,30 @@
 [
     {
-        "// image": "sdc-multiarch 13.3.0",
+        "// image": "sdc-multiarch 13.3.1",
+        "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
+        "version": "v0.10.26",
+        "configure_flags": "--dest-cpu=ia32 --with-dtrace",
+        "build_tag": "zone"
+    },
+    {
+        "// image": "sdc-multiarch 13.3.1",
+        "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
+        "version": "v0.10.26",
+        "configure_flags": "--dest-cpu=x64 --with-dtrace",
+        "build_tag": "zone64"
+    },
+    {
+        "// image": "sdc-multiarch 13.3.1",
         "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.25",
         "configure_flags": "--dest-cpu=x64 --with-dtrace",
-        "build_tag": "zone64",
-        "// users": "latest"
+        "build_tag": "zone64"
     },
     {
-        "// image": "sdc-multiarch 13.3.0",
+        "// image": "sdc-multiarch 13.3.1",
         "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.24",
@@ -18,7 +33,7 @@
         "// users": "latest"
     },
     {
-        "// image": "sdc-multiarch 13.3.0",
+        "// image": "sdc-multiarch 13.3.1",
         "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.23",
@@ -27,7 +42,7 @@
         "// users": ""
     },
     {
-        "// image": "sdc-multiarch 13.3.0",
+        "// image": "sdc-multiarch 13.3.1",
         "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.22",
@@ -36,7 +51,7 @@
         "// users": ""
     },
     {
-        "// image": "sdc-multiarch 13.3.0",
+        "// image": "sdc-multiarch 13.3.1",
         "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.21",
@@ -45,7 +60,7 @@
         "// users": "moray muskie fwapi hagfish-watcher"
     },
     {
-        "// image": "sdc-multiarch 13.3.0",
+        "// image": "sdc-multiarch 13.3.1",
         "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.18",
