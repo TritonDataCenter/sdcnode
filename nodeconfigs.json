@@ -88,7 +88,7 @@
         "build_tag": "zone"
     },
     {
-        "// image": "sdc-sdc-smartos 1.6.3",
+        "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.24",
@@ -97,7 +97,7 @@
         "build_tag": "zone"
     },
     {
-        "// image": "sdc-sdc-smartos 1.6.3",
+        "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.23",
@@ -107,7 +107,7 @@
         "// users": ""
     },
     {
-        "// image": "sdc-sdc-smartos 1.6.3",
+        "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.22",
@@ -117,7 +117,7 @@
         "// users": "moray, muskie"
     },
     {
-        "// image": "sdc-sdc-smartos 1.6.3",
+        "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.21",
@@ -127,7 +127,7 @@
         "// users": "latest"
     },
     {
-        "// image": "sdc-sdc-smartos 1.6.3",
+        "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.18",
@@ -138,7 +138,7 @@
     },
 
     {
-        "// image": "sdc-sdc-smartos 1.6.3",
+        "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.8.26",
@@ -152,7 +152,7 @@
         "// users": "latest"
     },
     {
-        "// image": "sdc-sdc-smartos 1.6.3",
+        "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.8.25",
@@ -248,7 +248,7 @@
     },
 
     {
-        "// image": "sdc-sdc-smartos 1.6.3",
+        "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v0.10.25",
@@ -258,7 +258,7 @@
         "// users": "latest"
     },
     {
-        "// image": "sdc-sdc-smartos 1.6.3",
+        "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v0.10.21",
@@ -268,7 +268,7 @@
         "// users": "latest"
     },
     {
-        "// image": "sdc-sdc-smartos 1.6.3",
+        "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v0.10.20",
