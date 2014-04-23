@@ -22,7 +22,7 @@
 #   and replace the one include with the given node version.
 # - npm_repo: Optional. If `npm_version` is used, this can be set to an alternative
 #   git repo (e.g. an npm fork). This is only intended for pre-release experimental
-#   builds. The default repo URL is "git://github.com/isaacs/npm.git"
+#   builds. The default repo URL is "https://github.com/npm/npm.git"
 
 
 export PS4='[\D{%FT%TZ}] ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
@@ -56,7 +56,7 @@ if [[ -n "$npmVersion" ]]; then
     if [[ -n "$npmRepo" ]]; then
         git clone $npmRepo deps/npm
     else
-        git clone git://github.com/isaacs/npm.git deps/npm
+        git clone https://github.com/npm/npm.git deps/npm
     fi
     (cd deps/npm && git checkout $npmVersion)
 fi
