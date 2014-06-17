@@ -3,6 +3,22 @@
         "// image": "sdc-multiarch 13.3.1",
         "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
+        "version": "v0.10.29",
+        "configure_flags": "--dest-cpu=ia32 --with-dtrace",
+        "build_tag": "zone"
+    },
+    {
+        "// image": "sdc-multiarch 13.3.1",
+        "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
+        "version": "v0.10.29",
+        "configure_flags": "--dest-cpu=x64 --with-dtrace",
+        "build_tag": "zone64"
+    },
+    {
+        "// image": "sdc-multiarch 13.3.1",
+        "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.26",
         "configure_flags": "--dest-cpu=ia32 --with-dtrace",
         "build_tag": "zone"
@@ -36,39 +52,21 @@
         "// image": "sdc-multiarch 13.3.1",
         "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
-        "version": "v0.10.23",
-        "configure_flags": "--dest-cpu=x64 --with-dtrace",
-        "build_tag": "zone64",
-        "// users": ""
-    },
-    {
-        "// image": "sdc-multiarch 13.3.1",
-        "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
-        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.22",
         "configure_flags": "--dest-cpu=x64 --with-dtrace",
         "build_tag": "zone64",
         "// users": ""
     },
-    {
-        "// image": "sdc-multiarch 13.3.1",
-        "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
-        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
-        "version": "v0.10.21",
-        "configure_flags": "--dest-cpu=x64 --with-dtrace",
-        "build_tag": "zone64",
-        "// users": "moray muskie fwapi hagfish-watcher"
-    },
-    {
-        "// image": "sdc-multiarch 13.3.1",
-        "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
-        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
-        "version": "v0.10.18",
-        "configure_flags": "--dest-cpu=x64 --with-dtrace",
-        "build_tag": "zone64",
-        "// users": "emoray"
-    },
 
+    {
+        "// image": "sdc-smartos 1.6.3",
+        "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
+        "version": "v0.10.29",
+        "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
+        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
+        "build_tag": "zone"
+    },
     {
         "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
@@ -100,37 +98,7 @@
         "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
-        "version": "v0.10.23",
-        "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
-        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
-        "build_tag": "zone",
-        "// users": ""
-    },
-    {
-        "// image": "sdc-smartos 1.6.3",
-        "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
-        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.22",
-        "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
-        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
-        "build_tag": "zone",
-        "// users": "moray, muskie"
-    },
-    {
-        "// image": "sdc-smartos 1.6.3",
-        "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
-        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
-        "version": "v0.10.21",
-        "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
-        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
-        "build_tag": "zone",
-        "// users": "latest"
-    },
-    {
-        "// image": "sdc-smartos 1.6.3",
-        "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
-        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
-        "version": "v0.10.18",
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone",
@@ -141,7 +109,7 @@
         "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
-        "version": "v0.8.26",
+        "version": "v0.8.27",
         "npm_version": "v1.4.7",
         "patch_files": [
             "patches/node-5feedc5-socket-getFD.patch",
@@ -156,7 +124,8 @@
         "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
-        "version": "v0.8.25",
+        "version": "v0.8.26",
+        "npm_version": "v1.4.7",
         "patch_files": [
             "patches/node-5feedc5-socket-getFD.patch",
             "patches/node-reverse-2c41a80-crypto-check-key-type.patch"
@@ -164,22 +133,7 @@
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone",
-        "// users": "imgapi, workflow"
-    },
-    {
-        "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
-        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
-        "version": "v0.8.24",
-        "patch_files": [
-            "patches/node-5feedc5-socket-getFD.patch",
-            "patches/node-c6e2db2f-clear-error-stack-for-0.8.patch",
-            "patches/node-reverse-2c41a80-crypto-check-key-type.patch",
-            "patches/npm-54e68d4-shrinkwrap-gitosis-urls.patch"
-        ],
-        "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
-        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
-        "build_tag": "zone",
-        "// users": "muppet, wrasse, medusa, dapi, ..."
+        "// users": "latest"
     },
     {
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
@@ -193,41 +147,7 @@
         ],
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
-        "build_tag": "zone",
-        "// users": "napi, fwapi"
-    },
-    {
-        "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
-        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
-        "version": "v0.8.22",
-        "patch_files": [
-            "patches/node-5feedc5-socket-getFD.patch"
-        ],
-        "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
-        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
-        "build_tag": "zone",
-        "// users": "mahi, manta-workflow, sapi, vmapi, manta-deployment"
-    },
-    {
-        "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
-        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
-        "version": "v0.8.21",
-        "patch_files": [
-            "patches/node-5feedc5-socket-getFD.patch"
-        ],
-        "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
-        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
-        "build_tag": "zone",
-        "// users": "manatee, binder"
-    },
-    {
-        "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
-        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
-        "version": "v0.8.18",
-        "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
-        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
-        "build_tag": "zone",
-        "// users": "mola, madtom, mako"
+        "build_tag": "zone"
     },
     {
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
@@ -238,16 +158,16 @@
         "build_tag": "zone",
         "// users": "keyapi"
     },
-    {
-        "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
-        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
-        "version": "v0.8.14",
-        "configure_flags": "--dest-cpu=ia32 --with-dtrace --openssl-use-sys --openssl-includes=/opt/local/include --openssl-libpath=/opt/local/lib --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
-        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
-        "build_tag": "zone",
-        "// users": ""
-    },
 
+    {
+        "// image": "sdc-smartos 1.6.3",
+        "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
+        "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v0.10.29",
+        "configure_flags": "--dest-cpu=ia32 --with-dtrace",
+        "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
+        "build_tag": "gz"
+    },
     {
         "// image": "sdc-smartos 1.6.3",
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
@@ -255,8 +175,7 @@
         "version": "v0.10.26",
         "configure_flags": "--dest-cpu=ia32 --with-dtrace",
         "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
-        "build_tag": "gz",
-        "// users": "latest"
+        "build_tag": "gz"
     },
     {
         "// image": "sdc-smartos 1.6.3",
@@ -267,26 +186,7 @@
         "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
         "build_tag": "gz"
     },
-    {
-        "// image": "sdc-smartos 1.6.3",
-        "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
-        "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
-        "version": "v0.10.21",
-        "configure_flags": "--dest-cpu=ia32 --with-dtrace",
-        "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
-        "build_tag": "gz",
-        "// users": "latest"
-    },
-    {
-        "// image": "sdc-smartos 1.6.3",
-        "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
-        "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
-        "version": "v0.10.20",
-        "configure_flags": "--dest-cpu=ia32 --with-dtrace",
-        "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
-        "build_tag": "gz",
-        "// users": "hagfish-watcher"
-    },
+
     {
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
@@ -304,19 +204,6 @@
     {
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
-        "version": "v0.8.24",
-        "patch_files": [
-            "patches/node-5feedc5-socket-getFD.patch",
-            "patches/npm-54e68d4-shrinkwrap-gitosis-urls.patch"
-        ],
-        "configure_flags": "--dest-cpu=ia32 --with-dtrace",
-        "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
-        "build_tag": "gz",
-        "// users": "amon-agent, amon-relay"
-    },
-    {
-        "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
-        "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v0.8.20",
         "patch_files": [
             "patches/node-5feedc5-socket-getFD.patch"
@@ -325,17 +212,5 @@
         "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
         "build_tag": "gz",
         "// users": "firewaller, provisioner, zonetracker, heartbeater, ..."
-    },
-    {
-        "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
-        "comment": "For use by agents in the GZ. Statically link to OpenSSL *for now* until OS-1294/TOOLS-130. Statically link zlib because of a node 0.6 build bug.",
-        "version": "v0.6.19",
-        "patch_files": [
-            "patches/node-v0.6-build-sans-fake-subset.patch"
-        ],
-        "configure_flags": "--with-dtrace",
-        "FUTURE_configure_flags": "--with-dtrace --openssl-libpath=/lib --openssl-includes=???",
-        "build_tag": "gz",
-        "// users": "convertvm"
     }
 ]
