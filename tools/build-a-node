@@ -81,6 +81,9 @@ eval "export $buildEnv"
 make V=1 CC=/opt/local/bin/gcc CXX=/opt/local/bin/g++
 make V=1 CC=/opt/local/bin/gcc CXX=/opt/local/bin/g++ install
 
+# trim
+rm -rf $buildDir/node/lib/node_modules/npm/.git
+
 # package
 imageUuid=$(echo "$buildOpts" | json image)
 buildTag=$(echo "$buildOpts" | json build_tag)
