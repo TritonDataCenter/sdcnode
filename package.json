@@ -4,8 +4,11 @@
   "version": "1.0.0",
   "private": true,
   "author": "Joyent",
-  "engines": ["node >=0.6.0"],
+  "engines": [
+    "node >=0.6.0"
+  ],
   "devDependencies": {
     "async": "0.1"
-  }
+  },
+  "license": "MPL-2.0"
 }
