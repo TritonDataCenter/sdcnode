@@ -20,7 +20,6 @@ include ./tools/mk/Makefile.defs
 #
 CLEAN_FILES += build/nodes bits
 DISTCLEAN_FILES += build
-DOC_FILES += index.restdown
 
 ifeq ($(UPLOAD_LOCATION),)
 	UPLOAD_LOCATION=bits@bits.joyent.us:builds
