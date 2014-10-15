@@ -33,6 +33,15 @@
         "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
         "build_tag": "gz"
     },
+    {
+        "// image": "sdc-base@14.2.0",
+        "image": "de411e86-548d-11e4-a4b7-3bb60478632a",
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
+        "version": "v0.11.14",
+        "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
+        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
+        "build_tag": "zone"
+    },
 
     {
         "// image": "sdc-multiarch 13.3.1",
@@ -67,6 +76,15 @@
         "configure_flags": "--dest-cpu=ia32 --with-dtrace",
         "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
         "build_tag": "gz"
+    },
+    {
+        "// image": "sdc-base@14.2.0",
+        "image": "de411e86-548d-11e4-a4b7-3bb60478632a",
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
+        "version": "v0.10.32",
+        "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
+        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
+        "build_tag": "zone"
     },
 
     {
@@ -174,6 +192,15 @@
         "version": "v0.10.25",
         "configure_flags": "--dest-cpu=x64 --with-dtrace",
         "build_tag": "zone64"
+    },
+    {
+        "// image": "sdc-base@14.2.0",
+        "image": "de411e86-548d-11e4-a4b7-3bb60478632a",
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
+        "version": "v0.10.25",
+        "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
+        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
+        "build_tag": "zone"
     },
     {
         "// image": "sdc-multiarch 13.3.1",
