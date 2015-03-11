@@ -23,6 +23,7 @@
 #
 # TODO: document supported build options
 # - version:
+# - sha: Optional. If given it overrides `version` for the 'git checkout'.
 # - configure_flags:
 # - build_env:
 # - build_tag:
@@ -57,7 +58,16 @@ mkdir -p $buildDir
 cp -PR $TOP/build/src $buildDir/src
 cd $buildDir/src
 version=$(echo "$buildOpts" | json version)
-git checkout $version
+if [[ -z "$version" ]]; then
+    echo "build-a-node: fatal error: no 'version' given" >&2
+    exit 1
+fi
+sha=$(echo "$buildOpts" | json sha)
+if [[ -n "$sha" ]]; then
+    git checkout $sha
+else
+    git checkout $version
+fi
 
 npmVersion=$(echo "$buildOpts" | json npm_version)
 if [[ -n "$npmVersion" ]]; then
