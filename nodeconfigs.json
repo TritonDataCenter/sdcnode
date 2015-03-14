@@ -4,7 +4,6 @@
         "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.37",
-        "sha": "f2a45caf2e1b73fea01fa9a941bc61096a999664",
         "configure_flags": "--dest-cpu=ia32 --with-dtrace",
         "build_tag": "zone"
     },
@@ -13,7 +12,6 @@
         "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.37",
-        "sha": "f2a45caf2e1b73fea01fa9a941bc61096a999664",
         "configure_flags": "--dest-cpu=x64 --with-dtrace",
         "build_tag": "zone64"
     },
@@ -22,7 +20,6 @@
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.37",
-        "sha": "f2a45caf2e1b73fea01fa9a941bc61096a999664",
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone"
@@ -32,7 +29,6 @@
         "image": "fd2cc906-8938-11e3-beab-4359c665ac99",
         "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v0.10.37",
-        "sha": "f2a45caf2e1b73fea01fa9a941bc61096a999664",
         "configure_flags": "--dest-cpu=ia32 --with-dtrace",
         "FUTURE_configure_flags": "--with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
         "build_tag": "gz"
@@ -42,7 +38,6 @@
         "image": "de411e86-548d-11e4-a4b7-3bb60478632a",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.37",
-        "sha": "f2a45caf2e1b73fea01fa9a941bc61096a999664",
         "configure_flags": "--dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone"
