@@ -1,0 +1,138 @@
+diff --git a/doc/api/tls.markdown b/doc/api/tls.markdown
+index fbd97e8..0276cec 100644
+--- a/doc/api/tls.markdown
++++ b/doc/api/tls.markdown
+@@ -151,9 +151,9 @@ automatically set as a listener for the [secureConnection][] event.  The
+     conjunction with the `honorCipherOrder` option described below to
+     prioritize the non-CBC cipher.
+ 
+-    Defaults to `AES128-GCM-SHA256:RC4:HIGH:!MD5:!aNULL:!EDH`.
++    Defaults to `ECDHE-RSA-AES128-SHA256:AES128-GCM-SHA256:RC4:HIGH:!MD5:!aNULL:!EDH`.
+     Consult the [OpenSSL cipher list format documentation] for details on the
+-    format. ECDH (Elliptic Curve Diffie-Hellman) ciphers are not yet supported.
++    format.
+ 
+ 
+     `AES128-GCM-SHA256` is used when node.js is linked against OpenSSL 1.0.1
+@@ -163,6 +163,17 @@ automatically set as a listener for the [secureConnection][] event.  The
+     acceptable cipher. Unfortunately, `AES256-SHA` is a CBC cipher and therefore
+     susceptible to BEAST attacks. Do *not* use it.
+ 
++  - `ecdhCurve`: A string describing a named curve to use for ECDH ciphers or
++    false to disable all ECDH ciphers.
++
++    This is required to support ECDH (Elliptic Curve Diffie-Hellman) ciphers.
++    ECDH ciphers are a newer alternative to RSA. The advantages of ECDH over
++    RSA is that it offers [Forward secrecy]. Forward secrecy means that for an
++    attacker it won't be possible to decrypt your previous data exchanges if
++    they get access to your private key.
++
++    Defaults to `prime256v1`. Consult [RFC 4492] for more details.
++
+   - `handshakeTimeout`: Abort the connection if the SSL/TLS handshake does not
+     finish in this many milliseconds. The default is 120 seconds.
+ 
+diff --git a/lib/crypto.js b/lib/crypto.js
+index 597d196..68e56f5 100644
+--- a/lib/crypto.js
++++ b/lib/crypto.js
+@@ -136,6 +136,8 @@ exports.createCredentials = function(options, context) {
+ 
+   if (options.ciphers) c.context.setCiphers(options.ciphers);
+ 
++  if (options.ecdhCurve) c.context.setECDHCurve(options.ecdhCurve);
++
+   if (options.ca) {
+     if (Array.isArray(options.ca)) {
+       for (var i = 0, len = options.ca.length; i < len; i++) {
+diff --git a/lib/tls.js b/lib/tls.js
+index e3b9083..a4c4b6e 100644
+--- a/lib/tls.js
++++ b/lib/tls.js
+@@ -34,6 +34,8 @@ var Timer = process.binding('timer_wrap').Timer;
+ var DEFAULT_CIPHERS = 'ECDHE-RSA-AES128-SHA256:AES128-GCM-SHA256:' + // TLS 1.2
+                       'RC4:HIGH:!MD5:!aNULL:!EDH';                   // TLS 1.0
+ 
++exports.DEFAULT_ECDH_CURVE = 'prime256v1';
++
+ // Allow {CLIENT_RENEG_LIMIT} client-initiated session renegotiations
+ // every {CLIENT_RENEG_WINDOW} seconds. An error event is emitted if more
+ // renegotations are seen. The settings are applied to all remote client
+@@ -1132,6 +1134,8 @@ function Server(/* [options], listener */) {
+     cert: self.cert,
+     ca: self.ca,
+     ciphers: self.ciphers || DEFAULT_CIPHERS,
++    ecdhCurve: self.ecdhCurve === undefined ?
++      exports.DEFAULT_ECDH_CURVE : self.ecdhCurve,
+     secureProtocol: self.secureProtocol,
+     secureOptions: self.secureOptions,
+     crl: self.crl,
+@@ -1245,6 +1249,8 @@ Server.prototype.setOptions = function(options) {
+   if (options.secureProtocol) this.secureProtocol = options.secureProtocol;
+   if (options.crl) this.crl = options.crl;
+   if (options.ciphers) this.ciphers = options.ciphers;
++  if (options.ecdhCurve === undefined)
++    this.ecdhCurve = options.ecdhCurve;
+ 
+   var secureOptions = crypto._getSecureOptions(options.secureProtocol,
+                                                options.secureOptions);
+diff --git a/src/node_crypto.cc b/src/node_crypto.cc
+index 7a3922a..a368a25 100644
+--- a/src/node_crypto.cc
++++ b/src/node_crypto.cc
+@@ -220,6 +220,7 @@ void SecureContext::Initialize(Handle<Object> target) {
+   NODE_SET_PROTOTYPE_METHOD(t, "addCRL", SecureContext::AddCRL);
+   NODE_SET_PROTOTYPE_METHOD(t, "addRootCerts", SecureContext::AddRootCerts);
+   NODE_SET_PROTOTYPE_METHOD(t, "setCiphers", SecureContext::SetCiphers);
++  NODE_SET_PROTOTYPE_METHOD(t, "setECDHCurve", SecureContext::SetECDHCurve);
+   NODE_SET_PROTOTYPE_METHOD(t, "setOptions", SecureContext::SetOptions);
+   NODE_SET_PROTOTYPE_METHOD(t, "setSessionIdContext",
+                                SecureContext::SetSessionIdContext);
+@@ -666,6 +667,34 @@ Handle<Value> SecureContext::SetCiphers(const Arguments& args) {
+   return True();
+ }
+ 
++Handle<Value> SecureContext::SetECDHCurve(const Arguments& args) {
++  HandleScope scope;
++
++  SecureContext* sc = ObjectWrap::Unwrap<SecureContext>(args.Holder());
++
++  if (args.Length() != 1 || !args[0]->IsString())
++    return ThrowTypeError("First argument should be a string");
++
++  String::Utf8Value curve(args[0]);
++
++  int nid = OBJ_sn2nid(*curve);
++
++  if (nid == NID_undef)
++    return ThrowTypeError("First argument should be a valid curve name");
++
++  EC_KEY* ecdh = EC_KEY_new_by_curve_name(nid);
++
++  if (!ecdh)
++    return ThrowTypeError("First argument should be a valid curve name");
++
++  SSL_CTX_set_options(sc->ctx_, SSL_OP_SINGLE_ECDH_USE);
++  SSL_CTX_set_tmp_ecdh(sc->ctx_, ecdh);
++
++  EC_KEY_free(ecdh);
++
++  return True();
++}
++
+ Handle<Value> SecureContext::SetOptions(const Arguments& args) {
+   HandleScope scope;
+ 
+diff --git a/src/node_crypto.h b/src/node_crypto.h
+index 54b9b88..de361a3 100644
+--- a/src/node_crypto.h
++++ b/src/node_crypto.h
+@@ -74,6 +74,7 @@ class SecureContext : ObjectWrap {
+   static v8::Handle<v8::Value> AddCRL(const v8::Arguments& args);
+   static v8::Handle<v8::Value> AddRootCerts(const v8::Arguments& args);
+   static v8::Handle<v8::Value> SetCiphers(const v8::Arguments& args);
++  static v8::Handle<v8::Value> SetECDHCurve(const v8::Arguments& args);
+   static v8::Handle<v8::Value> SetOptions(const v8::Arguments& args);
+   static v8::Handle<v8::Value> SetSessionIdContext(const v8::Arguments& args);
+   static v8::Handle<v8::Value> Close(const v8::Arguments& args);
+
