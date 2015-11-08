@@ -35,7 +35,7 @@ HOST_IMAGE=$(shell mdata-get sdc:image_uuid)
 all: build/src nodes bits
 
 build/src:
-	git clone https://github.com/joyent/node.git build/src
+	git clone https://github.com/nodejs/node.git build/src
 
 .PHONY: nodesrc
 nodesrc: | build/src
