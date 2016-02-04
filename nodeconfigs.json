@@ -2,14 +2,6 @@
     {
         "// image": "sdc-multiarch 13.3.1",
         "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
-        "comment": "For use by agents in the GZ. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
-        "version": "v4.2.3",
-        "configure_flags": "--dest-cpu=ia32 --with-dtrace",
-        "build_tag": "gz"
-    },
-    {
-        "// image": "sdc-multiarch 13.3.1",
-        "image": "b4bdc598-8939-11e3-bea4-8341f6861379",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.12.9",
         "configure_flags": "--dest-cpu=ia32 --with-dtrace",
