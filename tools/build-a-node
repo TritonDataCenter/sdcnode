@@ -36,7 +36,7 @@
 #   builds. The default repo URL is "https://github.com/npm/npm.git"
 
 
-export PS4='[\D{%FT%TZ}] ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+export PS4='+[\D{%FT%TZ}] ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }-- '
 set -o xtrace
 set -o errexit
 set -o pipefail
