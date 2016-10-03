@@ -1,14 +1,13 @@
 {
   "name": "sdcnode",
   "description": "builds of node for SDC",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "author": "Joyent",
   "engines": [
-    "node >=0.6.0"
+    "node >=0.10.0"
   ],
   "devDependencies": {
-    "async": "0.1",
     "semver": "5.3.0"
   },
   "license": "MPL-2.0"

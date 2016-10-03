@@ -122,8 +122,11 @@ fi
 ./configure $configureFlags --prefix=$buildDir/node
 
 buildEnv=$(echo "$buildOpts" | json build_env)
-make V=1 CC=$GCC CXX=$GXX $buildEnv
-make V=1 CC=$GCC CXX=$GXX $buildEnv install
+if [[ -n "$buildEnv" ]]; then
+    eval "export $buildEnv"
+fi
+make V=1 CC=$GCC CXX=$GXX
+make V=1 CC=$GCC CXX=$GXX install
 
 # Optionally include GCC runtime libs. If a version of GCC was used to compile
 # node is greater than the version of the GCC runtime libs included in the
