@@ -36,7 +36,7 @@ all: build/src nodes bits
 
 .PHONY: npmdeps
 npmdeps:
-    npm install
+	npm install
 
 build/src:
 	git clone https://github.com/nodejs/node.git build/src
