@@ -6,7 +6,7 @@
 #
 
 #
-# Copyright (c) 2014, Joyent, Inc.
+# Copyright (c) 2017, Joyent, Inc.
 #
 
 #
@@ -125,7 +125,12 @@ buildEnv=$(echo "$buildOpts" | json build_env)
 if [[ -n "$buildEnv" ]]; then
     eval "export $buildEnv"
 fi
-make V=1 CC=$GCC CXX=$GXX
+
+JOBS_ARG=
+if [[ -n ${MAKE_JOBS} ]]; then
+    JOBS_ARG="-j${MAKE_JOBS}"
+fi
+make ${JOBS_ARG} V=1 CC=$GCC CXX=$GXX
 make V=1 CC=$GCC CXX=$GXX install
 
 # Optionally include GCC runtime libs. If a version of GCC was used to compile
