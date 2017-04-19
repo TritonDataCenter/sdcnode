@@ -5,7 +5,7 @@
 #
 
 #
-# Copyright (c) 2014, Joyent, Inc.
+# Copyright (c) 2017, Joyent, Inc.
 #
 
 #
@@ -34,10 +34,6 @@ HOST_IMAGE=$(shell mdata-get sdc:image_uuid)
 .PHONY: all
 all: build/src nodes bits
 
-.PHONY: npmdeps
-npmdeps:
-	npm install
-
 build/src:
 	git clone https://github.com/nodejs/node.git build/src
 
@@ -47,7 +43,7 @@ nodesrc: | build/src
 		&& git fetch origin && git pull --rebase origin master
 
 .PHONY: nodes
-nodes: nodesrc npmdeps
+nodes: nodesrc
 	./tools/build-all-nodes $(TOP)/build/nodes $(STAMP) "this.image=='$(HOST_IMAGE)'"
 
 .PHONY: bits

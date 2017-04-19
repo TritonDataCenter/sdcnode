@@ -27,8 +27,8 @@
 # - configure_flags:
 # - build_env: Environment vars to pass to the `make` command to build node
 # - build_tag:
-# - gcc_version_range: A node-semver range to compare against the GCC used to
-#   build node
+# - gcc_version_prefix: A string prefix to compare against the GCC version used
+#   to build node
 # - rpath: A string to which to set the node RPATH/RUNPATH.
 # - include_gcc_runtime_libs: Include the needed libs from the GCC runtime
 #   (/opt/local/lib/gcc$major$minor/...) that are used by the built node.
@@ -63,13 +63,12 @@ echo "# Build a node in $buildDir with this config:"
 echo "$buildOpts" | json
 
 # Ensure we have a particular gcc version.
-gccVersionRange=$(echo "$buildOpts" | json gcc_version_range)
-if [[ -n "$gccVersionRange" ]]; then
-    currGccVer=$($GCC --version | head -1 | awk '{print $NF}')
-    matching=$(./node_modules/.bin/semver -r "$gccVersionRange" $currGccVer || true)
-    if [[ -z "$matching" ]]; then
-        echo "build-a-node: fatal error: gcc version ($currGccVer) does not" \
-            "match the given range: $gccVersionRange" >&2
+gccVersionPrefix=$(echo "${buildOpts}" | json gcc_version_prefix)
+if [[ -n "${gccVersionPrefix}" ]]; then
+    currGccVer=$(${GCC} --version | head -1 | awk '{print $NF}')
+    if [[ ${currGccVer} != ${gccVersionPrefix}* ]]; then
+        echo "build-a-node: fatal error: gcc version (${currGccVer}) does not" \
+            "match the given prefix: ${gccVersionPrefix}" >&2
         exit 1
     fi
 fi

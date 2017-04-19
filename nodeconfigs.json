@@ -4,7 +4,7 @@
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
         "version": "v4.8.1",
         "configure_flags": "--dest-cpu=ia32 --with-dtrace",
-        "gcc_version_range": "4.9.x",
+        "gcc_version_prefix": "4.9.",
         "rpath": "$ORIGIN/../lib",
         "include_gcc_runtime_libs": true,
         "build_tag": "gz"
@@ -31,7 +31,7 @@
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
         "version": "v4.7.3",
         "configure_flags": "--dest-cpu=ia32 --with-dtrace",
-        "gcc_version_range": "4.9.x",
+        "gcc_version_prefix": "4.9.",
         "rpath": "$ORIGIN/../lib",
         "include_gcc_runtime_libs": true,
         "build_tag": "gz"
@@ -50,7 +50,7 @@
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
         "version": "v4.6.1",
         "configure_flags": "--dest-cpu=ia32 --with-dtrace",
-        "gcc_version_range": "4.9.x",
+        "gcc_version_prefix": "4.9.",
         "rpath": "$ORIGIN/../lib",
         "include_gcc_runtime_libs": true,
         "build_tag": "gz"
@@ -69,7 +69,7 @@
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
         "version": "v4.6.0",
         "configure_flags": "--dest-cpu=ia32 --with-dtrace",
-        "gcc_version_range": "4.9.x",
+        "gcc_version_prefix": "4.9.",
         "rpath": "$ORIGIN/../lib",
         "include_gcc_runtime_libs": true,
         "build_tag": "gz"
