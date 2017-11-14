@@ -2,6 +2,60 @@
     {
         "// image": "sdc-minimal-multiarch-lts 15.4.1",
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
+        "version": "v8.9.1",
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "gcc_version_prefix": "4.9.",
+        "rpath": "$ORIGIN/../lib",
+        "include_gcc_runtime_libs": true,
+        "build_tag": "gz"
+    },
+    {
+        "// image": "sdc-minimal-multiarch-lts 15.4.1",
+        "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v8.9.1",
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "build_tag": "zone"
+    },
+    {
+        "// image": "sdc-minimal-multiarch-lts 15.4.1",
+        "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v8.9.1",
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "build_tag": "zone64"
+    },
+
+    {
+        "// image": "sdc-minimal-multiarch-lts 15.4.1",
+        "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
+        "version": "v6.12.0",
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "gcc_version_prefix": "4.9.",
+        "rpath": "$ORIGIN/../lib",
+        "include_gcc_runtime_libs": true,
+        "build_tag": "gz"
+    },
+    {
+        "// image": "sdc-minimal-multiarch-lts 15.4.1",
+        "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v6.12.0",
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "build_tag": "zone"
+    },
+    {
+        "// image": "sdc-minimal-multiarch-lts 15.4.1",
+        "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v6.12.0",
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "build_tag": "zone64"
+    },
+
+    {
+        "// image": "sdc-minimal-multiarch-lts 15.4.1",
+        "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
         "version": "v4.8.5",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
         "gcc_version_prefix": "4.9.",
