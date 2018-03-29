@@ -1,0 +1,14 @@
+TOOLS-1950 sdcnode 8.x should restore the ability to reload TLS certs at runtime
+diff --git a/src/node_crypto.cc b/src/node_crypto.cc
+index 13af291dfc..b90f014bd6 100644
+--- a/src/node_crypto.cc
++++ b/src/node_crypto.cc
+@@ -688,7 +688,7 @@ int SSL_CTX_use_certificate_chain(SSL_CTX* ctx,
+     // the CA certificates.
+     int r;
+
+-    SSL_CTX_clear_extra_chain_certs(ctx);
++    SSL_CTX_clear_chain_certs(ctx);
+
+     for (int i = 0; i < sk_X509_num(extra_certs); i++) {
+       X509* ca = sk_X509_value(extra_certs, i);
