@@ -1,5 +1,40 @@
 [
     {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "version": "v8.11.0",
+        "patch_files": [
+            "patches/tls-reload-certs-v8.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "gcc_version_prefix": "4.9.",
+        "rpath": "$ORIGIN/../lib",
+        "include_gcc_runtime_libs": true,
+        "build_tag": "gz"
+    },
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v8.11.0",
+        "patch_files": [
+            "patches/tls-reload-certs-v8.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "build_tag": "zone"
+    },
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v8.11.0",
+        "patch_files": [
+            "patches/tls-reload-certs-v8.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "build_tag": "zone64"
+    },
+    {
         "// image": "sdc-minimal-multiarch-lts 15.4.1",
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
         "version": "v8.11.0",
@@ -34,7 +69,41 @@
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
         "build_tag": "zone64"
     },
-
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "version": "v6.14.0",
+        "patch_files": [
+            "patches/tls-reload-certs-v6.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "gcc_version_prefix": "4.9.",
+        "rpath": "$ORIGIN/../lib",
+        "include_gcc_runtime_libs": true,
+        "build_tag": "gz"
+    },
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v6.14.0",
+        "patch_files": [
+            "patches/tls-reload-certs-v6.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "build_tag": "zone"
+    },
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v6.14.0",
+        "patch_files": [
+            "patches/tls-reload-certs-v6.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "build_tag": "zone64"
+    },
     {
         "// image": "sdc-minimal-multiarch-lts 15.4.1",
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
@@ -70,7 +139,41 @@
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
         "build_tag": "zone64"
     },
-
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "version": "v4.9.0",
+        "patch_files": [
+            "patches/tls-reload-certs-v4.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "gcc_version_prefix": "4.9.",
+        "rpath": "$ORIGIN/../lib",
+        "include_gcc_runtime_libs": true,
+        "build_tag": "gz"
+    },
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v4.9.0",
+        "patch_files": [
+            "patches/tls-reload-certs-v4.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "build_tag": "zone"
+    },
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v4.9.0",
+        "patch_files": [
+            "patches/tls-reload-certs-v4.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "build_tag": "zone64"
+    },
     {
         "// image": "sdc-minimal-multiarch-lts 15.4.1",
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
@@ -106,7 +209,41 @@
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
         "build_tag": "zone64"
     },
-
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "version": "v4.8.7",
+        "patch_files": [
+            "patches/tls-reload-certs-v4.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "gcc_version_prefix": "4.9.",
+        "rpath": "$ORIGIN/../lib",
+        "include_gcc_runtime_libs": true,
+        "build_tag": "gz"
+    },
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v4.8.7",
+        "patch_files": [
+            "patches/tls-reload-certs-v4.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "build_tag": "zone"
+    },
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v4.8.7",
+        "patch_files": [
+            "patches/tls-reload-certs-v4.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "build_tag": "zone64"
+    },
     {
         "// image": "sdc-minimal-multiarch-lts 15.4.1",
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
@@ -141,6 +278,30 @@
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
         "build_tag": "zone64"
+    },
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "version": "v4.6.1",
+        "patch_files": [
+            "patches/tls-reload-certs-v4.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "gcc_version_prefix": "4.9.",
+        "rpath": "$ORIGIN/../lib",
+        "include_gcc_runtime_libs": true,
+        "build_tag": "gz"
+    },
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "patch_files": [
+            "patches/tls-reload-certs-v4.x.patch"
+        ],
+        "version": "v4.6.1",
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "build_tag": "zone"
     },
     {
         "// image": "sdc-minimal-multiarch-lts 15.4.1",
@@ -163,6 +324,14 @@
             "patches/tls-reload-certs-v4.x.patch"
         ],
         "version": "v4.6.1",
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "build_tag": "zone"
+    },
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
+        "version": "v0.12.17",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
         "build_tag": "zone"
     },
@@ -227,6 +396,16 @@
         "build_tag": "gz"
     },
     {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "version": "v0.10.48",
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "gcc_version_prefix": "4.9.",
+        "rpath": "$ORIGIN/../lib",
+        "include_gcc_runtime_libs": true,
+        "build_tag": "gz"
+    },
+    {
         "// image": "sdc-minimal-multiarch-lts 15.4.1",
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
         "version": "v0.10.48",
@@ -243,6 +422,14 @@
         "version": "v0.10.48",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
         "build_tag": "zone"
+    },
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
+        "version": "v0.10.48",
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "build_tag": "zone64"
     },
     {
         "// image": "sdc-minimal-multiarch-lts 15.4.1",
@@ -285,6 +472,14 @@
         "version": "v0.10.48",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
+        "build_tag": "zone"
+    },
+    {
+        "// image": "minimal-multiarch 18.1.0",
+        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
+        "version": "v0.10.48",
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
         "build_tag": "zone"
     },
     {
