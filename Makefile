@@ -5,11 +5,11 @@
 #
 
 #
-# Copyright (c) 2017, Joyent, Inc.
+# Copyright (c) 2018, Joyent, Inc.
 #
 
 #
-# SDC Node makefile.
+# sdcnode makefile
 #
 
 include ./tools/mk/Makefile.defs
@@ -20,10 +20,6 @@ include ./tools/mk/Makefile.defs
 #
 CLEAN_FILES += build/nodes bits
 DISTCLEAN_FILES += build
-
-ifeq ($(UPLOAD_LOCATION),)
-	UPLOAD_LOCATION=bits@bits.joyent.us:builds
-endif
 
 HOST_IMAGE=$(shell mdata-get sdc:image_uuid)
 
@@ -52,9 +48,10 @@ bits:
 	mkdir -p $(TOP)/bits/sdcnode
 	cp $(TOP)/build/nodes/*/sdcnode-*.tgz $(TOP)/bits/sdcnode
 
-# Upload bits to stuff
+# Upload bits to $UPLOAD_LOCATION/...
 .PHONY: upload
 upload:
+	[[ -n "$(UPLOAD_LOCATION)" ]] || (echo "error: UPLOAD_LOCATION is not defined" >&2 ; exit 1)
 	./tools/upload-bits "$(BRANCH)" "" "$(TIMESTAMP)" $(UPLOAD_LOCATION)/sdcnode/$(HOST_IMAGE)
 
 .PHONY: dumpvar
