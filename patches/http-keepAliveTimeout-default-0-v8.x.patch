@@ -1,0 +1,26 @@
+diff --git a/lib/_http_server.js b/lib/_http_server.js
+index a93e423961..c33f2063e8 100644
+--- a/lib/_http_server.js
++++ b/lib/_http_server.js
+@@ -293,7 +293,7 @@ function Server(options, requestListener) {
+   this.on('connection', connectionListener);
+
+   this.timeout = 2 * 60 * 1000;
+-  this.keepAliveTimeout = 5000;
++  this.keepAliveTimeout = 0;
+   this._pendingResponseData = 0;
+   this.maxHeadersCount = null;
+   this.headersTimeout = 40 * 1000; // 40 seconds
+diff --git a/lib/https.js b/lib/https.js
+index 04710a07bd..03ea87e0bc 100644
+--- a/lib/https.js
++++ b/lib/https.js
+@@ -69,7 +69,7 @@ function Server(opts, requestListener) {
+   });
+
+   this.timeout = 2 * 60 * 1000;
+-  this.keepAliveTimeout = 5000;
++  this.keepAliveTimeout = 0;
+
+   this.headersTimeout = 40 * 1000; // 40 seconds
+ }
