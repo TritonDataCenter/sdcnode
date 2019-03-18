@@ -1,7 +1,7 @@
 {
   "name": "sdcnode",
   "description": "builds of node for SDC",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": true,
   "author": "Joyent",
   "engines": [
