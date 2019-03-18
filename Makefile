@@ -5,15 +5,17 @@
 #
 
 #
-# Copyright (c) 2018, Joyent, Inc.
+# Copyright 2019 Joyent, Inc.
 #
 
 #
 # sdcnode makefile
 #
 
-include ./tools/mk/Makefile.defs
+NAME=sdcnode
 
+ENGBLD_REQUIRE := $(shell git submodule update --init deps/eng)
+include ./deps/eng/tools/mk/Makefile.defs
 
 #
 # Files
@@ -63,5 +65,4 @@ dumpvar:
 	@echo "$(VAR) is '$($(VAR))'"
 
 
-include ./tools/mk/Makefile.deps
-include ./tools/mk/Makefile.targ
+include ./deps/eng/tools/mk/Makefile.targ
