@@ -643,7 +643,7 @@
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.48",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
-        "gcc": "/opt/local/gcc47/bin/gcc",
+        "gcc": "/opt/local/bin/gcc",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone"
     },
@@ -654,7 +654,7 @@
         "version": "v0.10.48",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
         "FUTURE_configure_flags": "--without-snapshot --with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
-        "gcc": "/opt/local/gcc47/bin/gcc",
+        "gcc": "/opt/local/bin/gcc",
         "build_tag": "gz"
     },
     {
