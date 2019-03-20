@@ -6,7 +6,7 @@
 #
 
 #
-# Copyright (c) 2017, Joyent, Inc.
+# Copyright 2019 Joyent, Inc.
 #
 
 #
@@ -27,8 +27,7 @@
 # - configure_flags:
 # - build_env: Environment vars to pass to the `make` command to build node
 # - build_tag:
-# - gcc_version_prefix: A string prefix to compare against the GCC version used
-#   to build node
+# - gcc: Path to the gcc binary to use.
 # - rpath: A string to which to set the node RPATH/RUNPATH.
 # - include_gcc_runtime_libs: Include the needed libs from the GCC runtime
 #   (/opt/local/lib/gcc$major$minor/...) that are used by the built node.
@@ -62,15 +61,22 @@ echo ""
 echo "# Build a node in $buildDir with this config:"
 echo "$buildOpts" | json
 
-# Ensure we have a particular gcc version.
-gccVersionPrefix=$(echo "${buildOpts}" | json gcc_version_prefix)
-if [[ -n "${gccVersionPrefix}" ]]; then
-    currGccVer=$(${GCC} --version | head -1 | awk '{print $NF}')
-    if [[ ${currGccVer} != ${gccVersionPrefix}* ]]; then
-        echo "build-a-node: fatal error: gcc version (${currGccVer}) does not" \
-            "match the given prefix: ${gccVersionPrefix}" >&2
-        exit 1
-    fi
+
+GCC=$(echo "${buildOpts}" | json gcc)
+if [[ -z "$GCC" ]]; then
+    echo "build-a-node: path to gcc must be explicit" >&2
+    exit 1
+fi
+GXX="${GCC%/*}/g++"
+
+if [ ! -f ${GCC} ]; then
+    echo "gcc: file ${GCC} not found"
+    exit 1
+fi
+
+if [ ! -f ${GXX} ]; then
+    echo "g++: file ${GXX} not found"
+    exit 1
 fi
 
 if [[ -d $buildDir ]]; then
