@@ -124,7 +124,7 @@
     },
     {
         "// image": "minimal-64-lts 18.4.0",
-        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "image": "c2c31b00-1d60-11e9-9a77-ff9f06554b0f",
         "version": "v6.17.0",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v6.17+.patch",
@@ -140,7 +140,7 @@
     },
     {
         "// image": "minimal-64-lts 18.4.0",
-        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "image": "c2c31b00-1d60-11e9-9a77-ff9f06554b0f",
         "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v6.17.0",
         "patch_files": [
@@ -586,7 +586,6 @@
         "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
         "version": "v0.10.48",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
-        "gcc": "/opt/local/gcc49/bin/gcc",
         "gcc": "/opt/local/gcc49/bin/gcc",
         "rpath": "$ORIGIN/../lib",
         "include_gcc_runtime_libs": true,
@@ -674,7 +673,7 @@
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.48",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
-        "gcc": "/opt/local/gcc47/bin/gcc",
+        "gcc": "/opt/local/gcc49/bin/gcc",
         "build_tag": "zone"
     },
     {
