@@ -105,7 +105,7 @@ if [[ -n "$npmVersion" ]]; then
     if [[ -n "$npmRepo" ]]; then
         git clone $npmRepo deps/npm
     else
-        git clone https://github.com/npm/npm.git deps/npm
+        git clone https://github.com/npm/cli.git deps/npm
     fi
     (cd deps/npm && git checkout $npmVersion)
 fi
