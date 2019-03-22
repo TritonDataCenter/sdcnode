@@ -124,7 +124,7 @@
     },
     {
         "// image": "minimal-64-lts 18.4.0",
-        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "image": "c2c31b00-1d60-11e9-9a77-ff9f06554b0f",
         "version": "v6.17.0",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v6.17+.patch",
@@ -140,7 +140,7 @@
     },
     {
         "// image": "minimal-64-lts 18.4.0",
-        "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
+        "image": "c2c31b00-1d60-11e9-9a77-ff9f06554b0f",
         "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v6.17.0",
         "patch_files": [
@@ -529,7 +529,7 @@
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.12.14",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
-        "gcc": "/opt/local/gcc49/bin/gcc",
+        "gcc": "/opt/local/bin/gcc",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone"
     },
@@ -540,7 +540,7 @@
         "version": "v0.12.14",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
         "FUTURE_configure_flags": "--without-snapshot --with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
-        "gcc": "/opt/local/gcc49/bin/gcc",
+        "gcc": "/opt/local/bin/gcc",
         "build_tag": "gz"
     },
     {
@@ -549,7 +549,7 @@
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.12.9",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
-        "gcc": "/opt/local/gcc49/bin/gcc",
+        "gcc": "/opt/local/gcc47/bin/gcc",
         "build_tag": "zone"
     },
     {
@@ -558,7 +558,7 @@
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.12.9",
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
-        "gcc": "/opt/local/gcc49/bin/gcc",
+        "gcc": "/opt/local/gcc47/bin/gcc",
         "build_tag": "zone64"
     },
     {
@@ -567,7 +567,7 @@
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.12.9",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
-        "gcc": "/opt/local/gcc49/bin/gcc",
+        "gcc": "/opt/local/bin/gcc",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone"
     },
@@ -578,7 +578,7 @@
         "version": "v0.12.9",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
         "FUTURE_configure_flags": "--without-snapshot --with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
-        "gcc": "/opt/local/gcc49/bin/gcc",
+        "gcc": "/opt/local/bin/gcc",
         "build_tag": "gz"
     },
     {
@@ -586,7 +586,6 @@
         "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
         "version": "v0.10.48",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
-        "gcc": "/opt/local/gcc49/bin/gcc",
         "gcc": "/opt/local/gcc49/bin/gcc",
         "rpath": "$ORIGIN/../lib",
         "include_gcc_runtime_libs": true,
@@ -608,7 +607,7 @@
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.48",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
-        "gcc": "/opt/local/gcc49/bin/gcc",
+        "gcc": "/opt/local/gcc47/bin/gcc",
         "build_tag": "zone"
     },
     {
@@ -635,7 +634,7 @@
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
         "version": "v0.10.48",
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
-        "gcc": "/opt/local/gcc49/bin/gcc",
+        "gcc": "/opt/local/gcc47/bin/gcc",
         "build_tag": "zone64"
     },
     {
@@ -644,7 +643,7 @@
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.48",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
-        "gcc": "/opt/local/gcc49/bin/gcc",
+        "gcc": "/opt/local/bin/gcc",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone"
     },
@@ -655,7 +654,7 @@
         "version": "v0.10.48",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
         "FUTURE_configure_flags": "--without-snapshot --with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
-        "gcc": "/opt/local/gcc49/bin/gcc",
+        "gcc": "/opt/local/bin/gcc",
         "build_tag": "gz"
     },
     {
@@ -664,7 +663,7 @@
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
         "version": "v0.10.48",
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
-        "gcc": "/opt/local/gcc49/bin/gcc",
+        "gcc": "/opt/local/gcc47/bin/gcc",
         "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
         "build_tag": "zone"
     },
@@ -698,7 +697,7 @@
         ],
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
         "FUTURE_configure_flags": "--without-snapshot --with-dtrace --openssl-use-sys --openssl-libpath=/lib --openssl-includes=??? --shared-zlib --shared-zlib-libpath=/lib --shared-zlib-includes=???",
-        "gcc": "/opt/local/gcc49/bin/gcc",
+        "gcc": "/opt/local/bin/gcc",
         "build_tag": "gz",
         "// users": "sdc-amon"
     }
