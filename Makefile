@@ -12,7 +12,10 @@
 # sdcnode makefile
 #
 
-NAME=sdcnode
+HOST_IMAGE=$(shell pfexec mdata-get sdc:image_uuid)
+
+# Use HOST_IMAGE as the $(NAME) so that we can reuse eng.git's bits-upload
+NAME=$(HOST_IMAGE)
 
 ENGBLD_REQUIRE := $(shell git submodule update --init deps/eng)
 include ./deps/eng/tools/mk/Makefile.defs
@@ -23,14 +26,13 @@ include ./deps/eng/tools/mk/Makefile.defs
 CLEAN_FILES += build/nodes bits
 DISTCLEAN_FILES += build
 
-HOST_IMAGE=$(shell mdata-get sdc:image_uuid)
-
+ENGBLD_DEST_OUT_PATH ?= /public/releng/sdcnode
 
 #
 # Repo-specific targets
 #
 .PHONY: all
-all: build/src nodes bits
+all: build/src nodes publish
 
 build/src:
 	git clone https://github.com/nodejs/node.git build/src
@@ -44,25 +46,10 @@ nodesrc: | build/src
 nodes: nodesrc
 	./tools/build-all-nodes $(TOP)/build/nodes $(STAMP) "this.image=='$(HOST_IMAGE)'"
 
-.PHONY: bits
-bits:
+.PHONY: publish
+publish: prepublish
 	rm -rf $(TOP)/bits
 	mkdir -p $(TOP)/bits/sdcnode
 	cp $(TOP)/build/nodes/*/sdcnode-*.tgz $(TOP)/bits/sdcnode
-
-# Upload bits to $UPLOAD_LOCATION/...
-.PHONY: upload
-upload:
-	[[ -n "$(UPLOAD_LOCATION)" ]] || (echo "error: UPLOAD_LOCATION is not defined" >&2 ; exit 1)
-	./tools/upload-bits "$(BRANCH)" "" "$(TIMESTAMP)" $(UPLOAD_LOCATION)/sdcnode/$(HOST_IMAGE)
-
-.PHONY: dumpvar
-dumpvar:
-	@if [[ -z "$(VAR)" ]]; then \
-		echo "error: set 'VAR' to dump a var"; \
-		exit 1; \
-	fi
-	@echo "$(VAR) is '$($(VAR))'"
-
 
 include ./deps/eng/tools/mk/Makefile.targ
