@@ -48,7 +48,7 @@ nodes: nodesrc
 
 .PHONY: publish
 publish: prepublish
-	rm -rf $(TOP)/bits
+	rm -rf $(TOP)/bits/sdcnode
 	mkdir -p $(TOP)/bits/sdcnode
 	cp $(TOP)/build/nodes/*/sdcnode-*.tgz $(TOP)/bits/sdcnode
 
