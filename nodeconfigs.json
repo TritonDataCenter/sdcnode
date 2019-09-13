@@ -821,16 +821,6 @@
         "build_tag": "gz"
     },
     {
-        "// image": "sdc-base@14.2.0",
-        "image": "de411e86-548d-11e4-a4b7-3bb60478632a",
-        "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib.",
-        "version": "v0.10.48",
-        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace --shared-zlib --shared-zlib-includes=/opt/local/include --shared-zlib-libpath=/opt/local/lib",
-        "gcc": "/opt/local/gcc47/bin/gcc",
-        "build_env": "LDFLAGS=\"-L/opt/local/lib -R/opt/local/lib\"",
-        "build_tag": "zone"
-    },
-    {
         "// image": "minimal-multiarch 18.1.0",
         "image": "1ad363ec-3b83-11e8-8521-2f68a4a34d5d",
         "comment": "For use by services running in zones. Dynamically link to pkgsrc's openssl and zlib?",
