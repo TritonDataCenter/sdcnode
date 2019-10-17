@@ -1,6 +1,6 @@
 This repository is part of the Joyent Triton project. See the [contribution
-guidelines](https://github.com/joyent/triton/blob/master/CONTRIBUTING.md) --
-*Triton does not use GitHub PRs* -- and general documentation at the main
+guidelines](https://github.com/joyent/triton/blob/master/CONTRIBUTING.md)
+and general documentation at the main
 [Triton project](https://github.com/joyent/triton) page.
 
 # sdcnode
@@ -97,4 +97,3 @@ Triton and Manta components.
 Note: Just listing the *versions* used isn't the full story. It would be good
 to list the full (version, image, build_tag) usage set so we could further
 trim the built sdcnode configs.
-
