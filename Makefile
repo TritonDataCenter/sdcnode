@@ -12,10 +12,20 @@
 # sdcnode makefile
 #
 
-HOST_IMAGE=$(shell pfexec mdata-get sdc:image_uuid)
+OSTYPE := $(shell uname -s | tr '[A-Z]' '[a-z]')
+
+ifeq ($(OSTYPE), sunos)
+	HOST_IMAGE=$(shell pfexec mdata-get sdc:image_uuid)
+else ifeq ($(OSTYPE),linux)
+	HOST_IMAGE=$(shell sudo mdata-get sdc:image_uuid)
+endif
 
 # Use HOST_IMAGE as the $(NAME) so that we can reuse eng.git's bits-upload
 NAME=$(HOST_IMAGE)
+
+# validate-buildenv.sh needs this, but we don't set other things expected by
+# Makefile.node_prebuilt.defs that normally defines it.
+NODE_PREBUILT_IMAGE=$(HOST_IMAGE)
 
 ENGBLD_REQUIRE := $(shell git submodule update --init deps/eng)
 include ./deps/eng/tools/mk/Makefile.defs

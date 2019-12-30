@@ -43,6 +43,7 @@ are built. There are configurations for a matrix of the following variables:
     | gz        | Intended for services running in the global zone or those that cannot otherwise depend on any pkgsrc libs (which are not available in the global zone). |
     | zone      | Intended for services running in a zone. It dynamically links to some pkgsrc libs in "/opt/local". |
     | zone64    | Intended for node.js services that require a 64-bit build of node. |
+    | linux	| Intended for running on linux hosts |
 
 
 The requirement is that the set of sdcnode configurations built cover the

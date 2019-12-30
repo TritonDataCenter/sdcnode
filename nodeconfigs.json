@@ -29,6 +29,18 @@
         "build_tag": "zone64"
     },
     {
+        "image": "63d6e664-3f1f-11e8-aef6-a3120cf8dd9d",
+        "version": "v8.16.1",
+        "patch_files": [
+            "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/tls-reload-certs-v8.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=x64",
+        "gcc": "/usr/bin/gcc",
+        "cflags": "-fno-aggressive-loop-optimizations",
+        "build_tag": "linux"
+    },
+    {
         "// image": "minimal-64 19.1.0",
         "image": "fbda7200-57e7-11e9-bb3a-8b0b548fcc37",
         "version": "v8.16.1",
