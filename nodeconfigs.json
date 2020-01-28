@@ -2,7 +2,7 @@
    {
         "// image": "minimal-64-lts 19.4.0",
         "image": "5417ab20-3156-11ea-8b19-2b66f5e7a439",
-        "version": "v8.16.1",
+        "version": "v8.17.0",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v8.x.patch",
             "patches/tls-reload-certs-v8.x.patch"
@@ -18,7 +18,7 @@
         "// image": "minimal-64-lts 19.4.0",
         "image": "5417ab20-3156-11ea-8b19-2b66f5e7a439",
         "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
-        "version": "v8.16.1",
+        "version": "v8.17.0",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v8.x.patch",
             "patches/tls-reload-certs-v8.x.patch"
@@ -351,7 +351,7 @@
     {
         "// image": "minimal-64-lts 19.4.0",
         "image": "5417ab20-3156-11ea-8b19-2b66f5e7a439",
-        "version": "v6.17.0",
+        "version": "v6.17.1",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v6.17+.patch",
             "patches/tls-reload-certs-v6.x.patch"
@@ -368,7 +368,7 @@
         "// image": "minimal-64-lts 19.4.0",
         "image": "5417ab20-3156-11ea-8b19-2b66f5e7a439",
         "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
-        "version": "v6.17.0",
+        "version": "v6.17.1",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v6.17+.patch",
             "patches/tls-reload-certs-v6.x.patch"
