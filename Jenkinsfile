@@ -25,7 +25,7 @@ pipeline {
         stage('1.6.3') {
             agent {
                 node {
-                    label joyCommonLabels(image_ver: '1.6.3')
+                    label joyCommonLabels(image_ver: '1.6.3', pkgsrc_arch: 'i386')
                 }
             }
             steps {
