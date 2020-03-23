@@ -19,7 +19,7 @@ pipeline {
         timestamps()
     }
     environment {
-        MIN_PLATFORM_STAMP = 'timf-20181206T011455Z'
+        MIN_PLATFORM_STAMP = '20181206T011455Z'
     }
     stages {
         stage('1.6.3') {
