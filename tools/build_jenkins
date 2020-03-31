@@ -1,0 +1,111 @@
+#!/bin/bash
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+
+#
+# Copyright 2020 Joyent, Inc.
+#
+
+#
+# This is a wrapper used by jenkins to build various sdcnode bundles,
+# replacing inline shell scripts in Jenkins 'freestyle' jobs.
+#
+
+if [[ -n "${TRACE}" ]]; then
+    export PS4='${BASH_SOURCE}:${LINENO}: '
+    set -o xtrace
+fi
+
+set -o errexit
+set -o pipefail
+
+#
+# Emit usage information
+#
+function usage {
+    echo "Usage: build_jenkins [options]"
+    echo "OPTIONS"
+    echo "  -u <uuid>     host image uuid"
+    echo "  -p            min_platform version"
+    exit 2
+}
+
+#
+# build <host image uuid> <min_platform>
+#
+function build {
+
+    # Force host image to match target instead of jenkins-agent image.
+    HOST_IMAGE=$1
+    MIN_PLATFORM=$2
+
+    jobs=$(psrinfo | wc -l)
+    cpucap=$(mdata-get sdc:cpu_cap)
+    if [[ -n $cpucap && $((cpucap / 100)) -lt $jobs ]]; then
+        jobs=$((cpucap / 100))
+    fi
+
+    if [[ $jobs -gt 16 ]]; then
+        # don't use more than 16 jobs because there are probably other things
+        # running on this server
+        jobs=16
+    fi
+    export MAKE_JOBS=$jobs
+
+    env
+    gmake clean
+
+    LOG=build.log
+    rm -f $LOG
+    touch $LOG
+    exec > >(tee ${LOG}) 2>&1
+
+    echo ""
+    echo "#----------------------"
+    gmake HOST_IMAGE=${HOST_IMAGE} all publish
+
+    cp $LOG bits/sdcnode/
+    # The path here includes the min_platform for this node build,
+    # needed because TRITON-2043 bumped min_platform and we want to
+    # allow older branches components using earlier sdcnode bits to
+    # still work.
+    export ENGBLD_DEST_OUT_PATH=/public/releng/sdcnode/$MIN_PLATFORM
+    gmake HOST_IMAGE=${HOST_IMAGE} bits-upload-latest
+}
+
+#
+# Main
+#
+while getopts "hp:u:" opt; do
+    case "${opt}" in
+        p)
+            # build debug platform bits
+            MIN_PLATFORM="${OPTARG}"
+            ;;
+        u)
+            HOST_IMAGE="${OPTARG}"
+            ;;
+        h)
+            usage
+            ;;
+        *)
+            echo "Error: Unknown argument ${opt}"
+            usage
+    esac
+done
+shift $((OPTIND - 1))
+
+if [[ -z "$MIN_PLATFORM" ]]; then
+    echo "Error: missing -p option for min platform"
+    usage
+fi
+
+if [[ -z "$HOST_IMAGE" ]]; then
+    echo "Error: missing -u option for host image uuid"
+    usage
+fi
+
+build $HOST_IMAGE $MIN_PLATFORM
