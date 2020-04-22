@@ -22,7 +22,7 @@ pipeline {
         MIN_PLATFORM_STAMP = '20181206T011455Z'
     }
     stages {
-        stage('build sdcnode versions') { 
+        stage('build sdcnode versions') {
             when {
                 triggeredBy cause: 'UserIdCause'
             }
