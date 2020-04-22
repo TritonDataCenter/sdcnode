@@ -35,7 +35,7 @@ pipeline {
                     }
                     steps {
                         sh('''
-echo ./tools/build_jenkins -u fd2cc906-8938-11e3-beab-4359c665ac99 -p $MIN_PLATFORM_STAMP
+./tools/build_jenkins -u fd2cc906-8938-11e3-beab-4359c665ac99 -p $MIN_PLATFORM_STAMP
         ''')
                     }
                 }
@@ -47,7 +47,7 @@ echo ./tools/build_jenkins -u fd2cc906-8938-11e3-beab-4359c665ac99 -p $MIN_PLATF
                     }
                     steps {
                         sh('''
-echo ./tools/build_jenkins -u 18b094b0-eb01-11e5-80c1-175dac7ddf02 -p $MIN_PLATFORM_STAMP
+./tools/build_jenkins -u 18b094b0-eb01-11e5-80c1-175dac7ddf02 -p $MIN_PLATFORM_STAMP
         ''')
                     }
                 }
@@ -59,7 +59,7 @@ echo ./tools/build_jenkins -u 18b094b0-eb01-11e5-80c1-175dac7ddf02 -p $MIN_PLATF
                     }
                     steps {
                         sh('''
-echo ./tools/build_jenkins -u c2c31b00-1d60-11e9-9a77-ff9f06554b0f -p $MIN_PLATFORM_STAMP
+./tools/build_jenkins -u c2c31b00-1d60-11e9-9a77-ff9f06554b0f -p $MIN_PLATFORM_STAMP
         ''')
                     }
                 }
@@ -71,7 +71,7 @@ echo ./tools/build_jenkins -u c2c31b00-1d60-11e9-9a77-ff9f06554b0f -p $MIN_PLATF
                     }
                     steps {
                         sh('''
-echo ./tools/build_jenkins -u 5417ab20-3156-11ea-8b19-2b66f5e7a439 -p $MIN_PLATFORM_STAMP
+./tools/build_jenkins -u 5417ab20-3156-11ea-8b19-2b66f5e7a439 -p $MIN_PLATFORM_STAMP
         ''')
                     }
                 }
