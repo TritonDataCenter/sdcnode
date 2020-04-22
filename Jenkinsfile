@@ -22,77 +22,60 @@ pipeline {
         MIN_PLATFORM_STAMP = '20181206T011455Z'
     }
     stages {
-        stage('1.6.3') {
-            agent {
-                node {
-                    label joyCommonLabels(image_ver: '1.6.3', pkgsrc_arch: 'i386')
+        stage('build sdcnode versions') { 
+            when {
+                triggeredBy cause: 'UserIdCause'
+            }
+            parallel {
+                stage('1.6.3') {
+                    agent {
+                        node {
+                            label joyCommonLabels(image_ver: '1.6.3', pkgsrc_arch: 'i386')
+                        }
+                    }
+                    steps {
+                        sh('''
+echo ./tools/build_jenkins -u fd2cc906-8938-11e3-beab-4359c665ac99 -p $MIN_PLATFORM_STAMP
+        ''')
+                    }
                 }
-            }
-            steps {
-                sh('''
-./tools/build_jenkins -u fd2cc906-8938-11e3-beab-4359c665ac99 -p $MIN_PLATFORM_STAMP
-''')
-            }
-        }
-        stage('sdc-minimal-multiarch-lts@15.4.1') {
-            agent {
-                node {
-                    label joyCommonLabels(image_ver: '15.4.1')
+                stage('sdc-minimal-multiarch-lts@15.4.1') {
+                    agent {
+                        node {
+                            label joyCommonLabels(image_ver: '15.4.1')
+                        }
+                    }
+                    steps {
+                        sh('''
+echo ./tools/build_jenkins -u 18b094b0-eb01-11e5-80c1-175dac7ddf02 -p $MIN_PLATFORM_STAMP
+        ''')
+                    }
                 }
-            }
-            steps {
-                sh('''
-./tools/build_jenkins -u 18b094b0-eb01-11e5-80c1-175dac7ddf02 -p $MIN_PLATFORM_STAMP
-''')
-            }
-        }
-        stage('minimal-64-lts 18.4.0') {
-            agent {
-                node {
-                    label joyCommonLabels(image_ver: '18.4.0')
+                stage('minimal-64-lts 18.4.0') {
+                    agent {
+                        node {
+                            label joyCommonLabels(image_ver: '18.4.0')
+                        }
+                    }
+                    steps {
+                        sh('''
+echo ./tools/build_jenkins -u c2c31b00-1d60-11e9-9a77-ff9f06554b0f -p $MIN_PLATFORM_STAMP
+        ''')
+                    }
                 }
-            }
-            steps {
-                sh('''
-./tools/build_jenkins -u c2c31b00-1d60-11e9-9a77-ff9f06554b0f -p $MIN_PLATFORM_STAMP
-''')
-            }
-        }
-        stage('minimal-64 19.1.0') {
-            agent {
-                node {
-                    label joyCommonLabels(image_ver: '19.1.0')
+                stage('minimal-64-lts 19.4.0') {
+                    agent {
+                        node {
+                            label joyCommonLabels(image_ver: '19.4.0')
+                        }
+                    }
+                    steps {
+                        sh('''
+echo ./tools/build_jenkins -u 5417ab20-3156-11ea-8b19-2b66f5e7a439 -p $MIN_PLATFORM_STAMP
+        ''')
+                    }
                 }
-            }
-            steps {
-                sh('''
-./tools/build_jenkins -u fbda7200-57e7-11e9-bb3a-8b0b548fcc37 -p $MIN_PLATFORM_STAMP
-''')
-            }
-        }
-        stage('minimal-64 19.2.0') {
-            agent {
-                node {
-                    label joyCommonLabels(image_ver: '19.2.0')
-                }
-            }
-            steps {
-                sh('''
-./tools/build_jenkins -u 7f4d80b4-9d70-11e9-9388-6b41834cbeeb -p $MIN_PLATFORM_STAMP
-''')
-            }
-        }
-        stage('minimal-64-lts 19.4.0') {
-            agent {
-                node {
-                    label joyCommonLabels(image_ver: '19.4.0')
-                }
-            }
-            steps {
-                sh('''
-./tools/build_jenkins -u 5417ab20-3156-11ea-8b19-2b66f5e7a439 -p $MIN_PLATFORM_STAMP
-''')
-            }
+            } // end parallel
         }
     }
 
