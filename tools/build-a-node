@@ -118,7 +118,7 @@ elif grep -q SRC_NODE_ROOT_CERTS_H_ src/node_root_certs.h; then
 namespace node {
 
 const char* root_certs[] = {
-    EOF
+EOF
 
     grep -v 'defined(NODE_WANT_INTERNALS)' $tfile >> src/node_root_certs.h
     rm -f $tfile
@@ -130,7 +130,7 @@ const char* root_certs[] = {
 } // namespace node
 
 #endif // SRC_NODE_ROOT_CERTS_H_
-    EOF
+EOF
 else
     # v8 has the ifdef guard, just copy it over!
     mv $tfile src/node_root_certs.h
