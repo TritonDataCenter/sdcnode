@@ -1,3 +1,12 @@
+From 6b4b370210b1f5c10ecfff97abd1e5fb65c7287c Mon Sep 17 00:00:00 2001
+From: Dan McDonald <danmcd@joyent.com>
+Date: Wed, 17 Mar 2021 14:57:13 -0400
+Subject: [PATCH] TRITON-2210 nodejs cert list is out of date in sdc zone
+
+---
+ src/node_root_certs.h | 1052 +++++++++++++++++++++++------------------
+ 1 file changed, 580 insertions(+), 472 deletions(-)
+
 diff --git a/src/node_root_certs.h b/src/node_root_certs.h
 index c8dba69f39..47beb730f4 100644
 --- a/src/node_root_certs.h
