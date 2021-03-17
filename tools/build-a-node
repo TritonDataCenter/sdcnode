@@ -120,6 +120,19 @@ if [[ -n "$patchFiles" ]]; then
     done
 fi
 
+# Update CA header file to modern one.
+CA_HEADER_SRC_URL=https://raw.githubusercontent.com/nodejs/node/master/src/node_root_certs.h
+tfile=$(mktemp)
+curl -o $tfile $CA_HEADER_SRC_URL
+if ! grep -q NODE_WANT_INTERNALS node_root_certs.h; then
+    # Older revs (v6, v4) don't have the ifdef guard in place.
+    grep -v 'defined(NODE_WANT_INTERNALS)' $tfile > node_root_certs.h
+    rm -f $tfile
+else
+    # v8 has the ifdef guard, just copy it over!
+    mv $tfile node_root_certs.h
+fi
+
 configureFlags=$(echo "$buildOpts" | json configure_flags)
 if [[ -z "$configureFlags" ]]; then
     configureFlags="--with-dtrace"
