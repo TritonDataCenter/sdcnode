@@ -5,6 +5,7 @@
         "version": "v8.17.0",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/CA-updates-v8.x.patch",
             "patches/tls-reload-certs-v8.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
@@ -21,6 +22,7 @@
         "version": "v8.17.0",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/CA-updates-v8.x.patch",
             "patches/tls-reload-certs-v8.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
@@ -34,6 +36,7 @@
         "version": "v8.16.1",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/CA-updates-v8.x.patch",
             "patches/tls-reload-certs-v8.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
@@ -50,6 +53,7 @@
         "version": "v8.16.1",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/CA-updates-v8.x.patch",
             "patches/tls-reload-certs-v8.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
@@ -63,6 +67,7 @@
         "version": "v8.16.1",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/CA-updates-v8.x.patch",
             "patches/tls-reload-certs-v8.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
@@ -78,75 +83,7 @@
         "version": "v8.16.1",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v8.x.patch",
-            "patches/tls-reload-certs-v8.x.patch"
-        ],
-        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
-        "gcc": "/opt/local/gcc49/bin/gcc",
-        "build_tag": "zone"
-    },
-    {
-        "// image": "sdc-minimal-multiarch-lts 15.4.1",
-        "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
-        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
-        "version": "v8.16.1",
-        "patch_files": [
-            "patches/http-keepAliveTimeout-default-0-v8.x.patch",
-            "patches/tls-reload-certs-v8.x.patch"
-        ],
-        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
-        "gcc": "/opt/local/gcc49/bin/gcc",
-        "build_tag": "zone64"
-    },
-    {
-        "// image": "minimal-64-lts 18.4.0",
-        "image": "c2c31b00-1d60-11e9-9a77-ff9f06554b0f",
-        "version": "v8.15.1",
-        "patch_files": [
-            "patches/http-keepAliveTimeout-default-0-v8.x.patch",
-            "patches/tls-reload-certs-v8.x.patch"
-        ],
-        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
-        "gcc": "/opt/local/gcc7/bin/gcc",
-        "cflags": "-fno-aggressive-loop-optimizations",
-        "rpath": "$ORIGIN/../lib",
-        "include_gcc_runtime_libs": true,
-        "build_tag": "gz"
-    },
-    {
-        "// image": "minimal-64-lts 18.4.0",
-        "image": "c2c31b00-1d60-11e9-9a77-ff9f06554b0f",
-        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
-        "version": "v8.15.1",
-        "patch_files": [
-            "patches/http-keepAliveTimeout-default-0-v8.x.patch",
-            "patches/tls-reload-certs-v8.x.patch"
-        ],
-        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
-        "gcc": "/opt/local/gcc7/bin/gcc",
-        "cflags": "-fno-aggressive-loop-optimizations",
-        "build_tag": "zone64"
-    },
-    {
-        "// image": "sdc-minimal-multiarch-lts 15.4.1",
-        "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
-        "version": "v8.15.1",
-        "patch_files": [
-            "patches/http-keepAliveTimeout-default-0-v8.x.patch",
-            "patches/tls-reload-certs-v8.x.patch"
-        ],
-        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
-        "gcc": "/opt/local/gcc49/bin/gcc",
-        "rpath": "$ORIGIN/../lib",
-        "include_gcc_runtime_libs": true,
-        "build_tag": "gz"
-    },
-    {
-        "// image": "sdc-minimal-multiarch-lts 15.4.1",
-        "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
-        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
-        "version": "v8.15.1",
-        "patch_files": [
-            "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/CA-updates-v8.x.patch",
             "patches/tls-reload-certs-v8.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
@@ -157,9 +94,84 @@
         "// image": "sdc-minimal-multiarch-lts 15.4.1",
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
         "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v8.16.1",
+        "patch_files": [
+            "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/CA-updates-v8.x.patch",
+            "patches/tls-reload-certs-v8.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "gcc": "/opt/local/gcc49/bin/gcc",
+        "build_tag": "zone64"
+    },
+    {
+        "// image": "minimal-64-lts 18.4.0",
+        "image": "c2c31b00-1d60-11e9-9a77-ff9f06554b0f",
         "version": "v8.15.1",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/CA-updates-v8.x.patch",
+            "patches/tls-reload-certs-v8.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "gcc": "/opt/local/gcc7/bin/gcc",
+        "cflags": "-fno-aggressive-loop-optimizations",
+        "rpath": "$ORIGIN/../lib",
+        "include_gcc_runtime_libs": true,
+        "build_tag": "gz"
+    },
+    {
+        "// image": "minimal-64-lts 18.4.0",
+        "image": "c2c31b00-1d60-11e9-9a77-ff9f06554b0f",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v8.15.1",
+        "patch_files": [
+            "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/CA-updates-v8.x.patch",
+            "patches/tls-reload-certs-v8.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "gcc": "/opt/local/gcc7/bin/gcc",
+        "cflags": "-fno-aggressive-loop-optimizations",
+        "build_tag": "zone64"
+    },
+    {
+        "// image": "sdc-minimal-multiarch-lts 15.4.1",
+        "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
+        "version": "v8.15.1",
+        "patch_files": [
+            "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/CA-updates-v8.x.patch",
+            "patches/tls-reload-certs-v8.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "gcc": "/opt/local/gcc49/bin/gcc",
+        "rpath": "$ORIGIN/../lib",
+        "include_gcc_runtime_libs": true,
+        "build_tag": "gz"
+    },
+    {
+        "// image": "sdc-minimal-multiarch-lts 15.4.1",
+        "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v8.15.1",
+        "patch_files": [
+            "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/CA-updates-v8.x.patch",
+            "patches/tls-reload-certs-v8.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
+        "gcc": "/opt/local/gcc49/bin/gcc",
+        "build_tag": "zone"
+    },
+    {
+        "// image": "sdc-minimal-multiarch-lts 15.4.1",
+        "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v8.15.1",
+        "patch_files": [
+            "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/CA-updates-v8.x.patch",
             "patches/tls-reload-certs-v8.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
@@ -174,6 +186,7 @@
         "version": "v8.11.0",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v8.11.patch",
+            "patches/CA-updates-v8.x.patch",
             "patches/tls-reload-certs-v8.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
@@ -186,6 +199,7 @@
         "version": "v6.17.1",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v6.17+.patch",
+            "patches/CA-updates-v6.x.patch",
             "patches/tls-reload-certs-v6.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
@@ -203,6 +217,7 @@
         "version": "v6.17.1",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v6.17+.patch",
+            "patches/CA-updates-v6.x.patch",
             "patches/tls-reload-certs-v6.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
@@ -217,6 +232,7 @@
         "version": "v6.17.0",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v6.17+.patch",
+            "patches/CA-updates-v6.x.patch",
             "patches/tls-reload-certs-v6.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
@@ -234,6 +250,7 @@
         "version": "v6.17.0",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v6.17+.patch",
+            "patches/CA-updates-v6.x.patch",
             "patches/tls-reload-certs-v6.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
@@ -248,6 +265,7 @@
         "version": "v6.17.0",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v6.17+.patch",
+            "patches/CA-updates-v6.x.patch",
             "patches/tls-reload-certs-v6.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
@@ -263,6 +281,7 @@
         "version": "v6.17.0",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v6.17+.patch",
+            "patches/CA-updates-v6.x.patch",
             "patches/tls-reload-certs-v6.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
@@ -276,6 +295,7 @@
         "version": "v6.17.0",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v6.17+.patch",
+            "patches/CA-updates-v6.x.patch",
             "patches/tls-reload-certs-v6.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
@@ -287,6 +307,7 @@
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
         "version": "v6.15.1",
         "patch_files": [
+            "patches/CA-updates-v6.x.patch",
             "patches/tls-reload-certs-v6.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
@@ -301,6 +322,7 @@
         "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v6.15.1",
         "patch_files": [
+            "patches/CA-updates-v6.x.patch",
             "patches/tls-reload-certs-v6.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
@@ -313,6 +335,7 @@
         "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v6.15.1",
         "patch_files": [
+            "patches/CA-updates-v6.x.patch",
             "patches/tls-reload-certs-v6.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
@@ -324,6 +347,7 @@
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
         "version": "v4.9.0",
         "patch_files": [
+            "patches/CA-updates-v4.x.patch",
             "patches/tls-reload-certs-v4.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
@@ -338,6 +362,7 @@
         "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v4.9.0",
         "patch_files": [
+            "patches/CA-updates-v4.x.patch",
             "patches/tls-reload-certs-v4.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
@@ -350,6 +375,7 @@
         "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v4.9.0",
         "patch_files": [
+            "patches/CA-updates-v4.x.patch",
             "patches/tls-reload-certs-v4.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
@@ -361,6 +387,7 @@
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
         "version": "v4.8.7",
         "patch_files": [
+            "patches/CA-updates-v4.x.patch",
             "patches/tls-reload-certs-v4.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
@@ -375,6 +402,7 @@
         "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v4.8.7",
         "patch_files": [
+            "patches/CA-updates-v4.x.patch",
             "patches/tls-reload-certs-v4.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
@@ -387,6 +415,7 @@
         "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "version": "v4.8.7",
         "patch_files": [
+            "patches/CA-updates-v4.x.patch",
             "patches/tls-reload-certs-v4.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
@@ -398,6 +427,7 @@
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
         "version": "v4.6.1",
         "patch_files": [
+            "patches/CA-updates-v4.x.patch",
             "patches/tls-reload-certs-v4.x.patch"
         ],
         "configure_flags": "--without-snapshot --dest-cpu=ia32 --with-dtrace",
@@ -411,6 +441,7 @@
         "image": "18b094b0-eb01-11e5-80c1-175dac7ddf02",
         "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
         "patch_files": [
+            "patches/CA-updates-v4.x.patch",
             "patches/tls-reload-certs-v4.x.patch"
         ],
         "version": "v4.6.1",
