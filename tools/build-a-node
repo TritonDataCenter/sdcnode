@@ -94,7 +94,7 @@ fi
 
 # Before we checkout the branch, copy off the most recent CA header file.
 tfile=$(mktemp)
-cp node_root_certs.h $tfile
+cp src/node_root_certs.h $tfile
 
 # Now we checkout the appropriate version or sha...
 sha=$(echo "$buildOpts" | json sha)
@@ -105,13 +105,13 @@ else
 fi
 
 # ..and then Update the CA header file to the modern one.
-if ! grep -q NODE_WANT_INTERNALS node_root_certs.h; then
+if ! grep -q NODE_WANT_INTERNALS src/node_root_certs.h; then
     # Older revs (v6, v4) don't have the ifdef guard in place.
-    grep -v 'defined(NODE_WANT_INTERNALS)' $tfile > node_root_certs.h
+    grep -v 'defined(NODE_WANT_INTERNALS)' $tfile > src/node_root_certs.h
     rm -f $tfile
 else
     # v8 has the ifdef guard, just copy it over!
-    mv $tfile node_root_certs.h
+    mv $tfile src/node_root_certs.h
 fi
 
 npmVersion=$(echo "$buildOpts" | json npm_version)
