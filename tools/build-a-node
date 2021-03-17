@@ -109,6 +109,28 @@ if ! grep -q NODE_WANT_INTERNALS src/node_root_certs.h; then
     # Older revs (v6, v4) don't have the ifdef guard in place.
     grep -v 'defined(NODE_WANT_INTERNALS)' $tfile > src/node_root_certs.h
     rm -f $tfile
+elif grep -q SRC_NODE_ROOT_CERTS_H_ src/node_root_certs.h; then
+    # Wow, we hit a really old v0.8.x one.  Do it special...
+    cat > src/node_root_certs.h <<EOF
+#ifndef SRC_NODE_ROOT_CERTS_H_
+#define SRC_NODE_ROOT_CERTS_H_
+
+namespace node {
+
+const char* root_certs[] = {
+    EOF
+
+    grep -v 'defined(NODE_WANT_INTERNALS)' $tfile >> src/node_root_certs.h
+    rm -f $tfile
+
+    cat >> src/node_root_certs.h <<EOF
+  0 // sentinel
+};
+
+} // namespace node
+
+#endif // SRC_NODE_ROOT_CERTS_H_
+    EOF
 else
     # v8 has the ifdef guard, just copy it over!
     mv $tfile src/node_root_certs.h
