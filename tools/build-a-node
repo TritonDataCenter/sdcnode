@@ -91,11 +91,27 @@ if [[ -z "$version" ]]; then
     echo "build-a-node: fatal error: no 'version' given" >&2
     exit 1
 fi
+
+# Before we checkout the branch, copy off the most recent CA header file.
+tfile=$(mktemp)
+cp node_root_certs.h $tfile
+
+# Now we checkout the appropriate version or sha...
 sha=$(echo "$buildOpts" | json sha)
 if [[ -n "$sha" ]]; then
     git checkout $sha
 else
     git checkout $version
+fi
+
+# ..and then Update the CA header file to the modern one.
+if ! grep -q NODE_WANT_INTERNALS node_root_certs.h; then
+    # Older revs (v6, v4) don't have the ifdef guard in place.
+    grep -v 'defined(NODE_WANT_INTERNALS)' $tfile > node_root_certs.h
+    rm -f $tfile
+else
+    # v8 has the ifdef guard, just copy it over!
+    mv $tfile node_root_certs.h
 fi
 
 npmVersion=$(echo "$buildOpts" | json npm_version)
@@ -118,19 +134,6 @@ if [[ -n "$patchFiles" ]]; then
         patchFile=$(echo "$patchFiles" | json $i)
         patch -p1 <$TOP/$patchFile
     done
-fi
-
-# Update CA header file to modern one.
-CA_HEADER_SRC_URL=https://raw.githubusercontent.com/nodejs/node/master/src/node_root_certs.h
-tfile=$(mktemp)
-curl -k -o $tfile $CA_HEADER_SRC_URL
-if ! grep -q NODE_WANT_INTERNALS node_root_certs.h; then
-    # Older revs (v6, v4) don't have the ifdef guard in place.
-    grep -v 'defined(NODE_WANT_INTERNALS)' $tfile > node_root_certs.h
-    rm -f $tfile
-else
-    # v8 has the ifdef guard, just copy it over!
-    mv $tfile node_root_certs.h
 fi
 
 configureFlags=$(echo "$buildOpts" | json configure_flags)
