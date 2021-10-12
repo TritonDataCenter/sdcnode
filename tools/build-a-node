@@ -92,9 +92,12 @@ if [[ -z "$version" ]]; then
     exit 1
 fi
 
-# Before we checkout the branch, copy off the most recent CA header file.
+# Before we checkout the branch, copy off the most recent CA header file
 tfile=$(mktemp)
 cp src/node_root_certs.h $tfile
+# Now remove the expired Let's Encrypt root certificate. This is to work
+# work around a bug in OpenSSL 1.0.2
+/usr/bin/sed -i '' '/DST Root CA X3/,/END CERTIFICAT/d' $tfile
 
 # Now we checkout the appropriate version or sha...
 sha=$(echo "$buildOpts" | json sha)
