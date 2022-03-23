@@ -79,7 +79,7 @@ pipeline {
                 stage('minimal-64-lts 21.4.0') {
                     agent {
                         node {
-                            label joyCommonLabels(image_ver: '21.4.0')
+                            label joyCommonLabels(image_ver: '21.4.0', pi: '20210826T002459Z')
                         }
                     }
                     steps {
