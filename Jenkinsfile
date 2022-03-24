@@ -5,7 +5,7 @@
  */
 
 /*
- * Copyright 2021 Joyent, Inc.
+ * Copyright 2022 Joyent, Inc.
  */
 
 @Library('jenkins-joylib@v1.0.8') _
@@ -20,6 +20,7 @@ pipeline {
     }
     environment {
         MIN_PLATFORM_STAMP = '20181206T011455Z'
+        MIN_PLATFORM_STAMP_NG = '20210826T002459Z'
     }
     stages {
         stage('build sdcnode versions') {
@@ -72,6 +73,18 @@ pipeline {
                     steps {
                         sh('''
 ./tools/build_jenkins -u 5417ab20-3156-11ea-8b19-2b66f5e7a439 -p $MIN_PLATFORM_STAMP
+        ''')
+                    }
+                }
+                stage('minimal-64-lts 21.4.0') {
+                    agent {
+                        node {
+                            label joyCommonLabels(image_ver: '21.4.0', pi: '20210826T002459Z')
+                        }
+                    }
+                    steps {
+                        sh('''
+./tools/build_jenkins -u a7199134-7e94-11ec-be67-db6f482136c2 -p $MIN_PLATFORM_STAMP_NG
         ''')
                     }
                 }
