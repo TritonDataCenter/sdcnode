@@ -5,7 +5,7 @@
 #
 
 #
-# Copyright 2019 Joyent, Inc.
+# Copyright 2022 Joyent, Inc.
 #
 
 #
@@ -19,6 +19,15 @@ NAME=$(HOST_IMAGE)
 
 ENGBLD_REQUIRE := $(shell git submodule update --init deps/eng)
 include ./deps/eng/tools/mk/Makefile.defs
+
+# 21.4.0 images moved the MIN_PLATFORM up, so override the default
+# build values if necessary. We need a more elegant way to do this
+# when we start using images later than 21.4.0, and this should
+# probably be in the previously included Makefile.defs anyway.
+ifeq ($(shell $(_AWK) '/^Image/ {print $$3}' < /etc/product),21.4.0)
+BASE_IMAGE_UUID = a7199134-7e94-11ec-be67-db6f482136c2
+BUILD_PLATFORM  = 20210826T002459Z
+endif
 
 #
 # Files
