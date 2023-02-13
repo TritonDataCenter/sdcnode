@@ -12,7 +12,7 @@
 # sdcnode makefile
 #
 
-HOST_IMAGE=$(shell pfexec mdata-get sdc:image_uuid)
+HOST_IMAGE=a7199134-7e94-11ec-be67-db6f482136c2
 
 # Use HOST_IMAGE as the $(NAME) so that we can reuse eng.git's bits-upload
 NAME=$(HOST_IMAGE)
@@ -48,12 +48,12 @@ build/src:
 
 .PHONY: nodesrc
 nodesrc: | build/src
-	cd build/src && git checkout master \
-		&& git fetch origin && git pull --rebase origin master
+	cd build/src && git checkout main \
+		&& git fetch origin && git pull --rebase origin main
 
 .PHONY: nodes
 nodes: nodesrc
-	./tools/build-all-nodes $(TOP)/build/nodes $(STAMP) "this.image=='$(HOST_IMAGE)'"
+	./tools/build-all-nodes $(TOP)/build/nodes $(STAMP) "this.image=='$(HOST_IMAGE)' && this.version=='v6.17.1'"
 
 .PHONY: publish
 publish: prepublish
