@@ -6,6 +6,7 @@
 
 #
 # Copyright 2022 Joyent, Inc.
+# Copyright 2023 MNX Cloud, Inc.
 #
 
 #
@@ -48,8 +49,8 @@ build/src:
 
 .PHONY: nodesrc
 nodesrc: | build/src
-	cd build/src && git checkout master \
-		&& git fetch origin && git pull --rebase origin master
+	cd build/src && git checkout main \
+		&& git fetch origin && git pull --rebase origin main
 
 .PHONY: nodes
 nodes: nodesrc
