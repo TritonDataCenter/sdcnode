@@ -2,6 +2,35 @@
     {
         "// image": "minimal-64-lts 21.4.0",
         "image": "a7199134-7e94-11ec-be67-db6f482136c2",
+        "version": "b14.21.3",
+        "patch_files": [
+            "patches/http-keepAliveTimeout-default-0-v14.x.patch",
+						"patches/deps_v8_src_base_platform_platform-posix.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "gcc": "/opt/local/gcc7/bin/gcc",
+        "cflags": "-fno-aggressive-loop-optimizations",
+        "rpath": "$ORIGIN/../lib",
+        "include_gcc_runtime_libs": true,
+        "build_tag": "gz"
+    },
+    {
+        "// image": "minimal-64-lts 21.4.0",
+        "image": "a7199134-7e94-11ec-be67-db6f482136c2",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v14.21.3",
+        "patch_files": [
+            "patches/http-keepAliveTimeout-default-0-v14.x.patch",
+						"patches/deps_v8_src_base_platform_platform-posix.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "gcc": "/opt/local/gcc7/bin/gcc",
+        "cflags": "-fno-aggressive-loop-optimizations",
+        "build_tag": "zone64"
+    },
+    {
+        "// image": "minimal-64-lts 21.4.0",
+        "image": "a7199134-7e94-11ec-be67-db6f482136c2",
         "version": "v8.17.0",
         "patch_files": [
             "patches/http-keepAliveTimeout-default-0-v8.x.patch",

@@ -29,6 +29,8 @@ BASE_IMAGE_UUID = a7199134-7e94-11ec-be67-db6f482136c2
 BUILD_PLATFORM  = 20210826T002459Z
 endif
 
+VERSION = v14.21.3
+
 #
 # Files
 #
@@ -53,7 +55,7 @@ nodesrc: | build/src
 
 .PHONY: nodes
 nodes: nodesrc
-	./tools/build-all-nodes $(TOP)/build/nodes $(STAMP) "this.image=='$(HOST_IMAGE)' && this.version=='v6.17.1'"
+	./tools/build-all-nodes $(TOP)/build/nodes $(STAMP) "this.image=='$(HOST_IMAGE)' && this.version=='$(VERSION)'"
 
 .PHONY: publish
 publish: prepublish
