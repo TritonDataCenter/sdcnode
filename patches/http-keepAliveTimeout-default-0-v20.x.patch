@@ -1,0 +1,13 @@
+diff --git a/lib/_http_server.js b/lib/_http_server.js
+index 775090b373..87eaa53f7e 100644
+--- a/lib/_http_server.js
++++ b/lib/_http_server.js
+@@ -475,7 +475,7 @@ function storeHTTPOptions(options) {
+     validateInteger(keepAliveTimeout, 'keepAliveTimeout', 0);
+     this.keepAliveTimeout = keepAliveTimeout;
+   } else {
+-    this.keepAliveTimeout = 5_000; // 5 seconds;
++    this.keepAliveTimeout = 0; // 0 seconds;
+   }
+ 
+   const connectionsCheckingInterval = options.connectionsCheckingInterval;
