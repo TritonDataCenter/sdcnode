@@ -184,7 +184,8 @@ if [[ -n ${MAKE_JOBS} ]]; then
 fi
 make ${JOBS_ARG} V=1 CC=$GCC CXX=$GXX \
      CFLAGS="${cflags}" CXXFLAGS="${cflags}"
-make V=1 CC=$GCC CXX=$GXX install
+make V=1 CC=$GCC CXX=$GXX \
+     CFLAGS="${cflags}" CXXFLAGS="${cflags}" install
 
 # Optionally include GCC runtime libs. If a version of GCC was used to compile
 # node is greater than the version of the GCC runtime libs included in the
