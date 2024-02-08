@@ -1,7 +1,7 @@
-This repository is part of the Joyent Triton project. See the [contribution
-guidelines](https://github.com/joyent/triton/blob/master/CONTRIBUTING.md)
+This repository is part of the Triton Data Center project. See the [contribution
+guidelines](https://github.com/TritonDataCenter/triton/blob/master/CONTRIBUTING.md)
 and general documentation at the main
-[Triton project](https://github.com/joyent/triton) page.
+[Triton project](https://github.com/TritonDataCenter/triton) page.
 
 # sdcnode
 
@@ -22,10 +22,10 @@ To build the sdcnodes for the matching image as the building machine:
 
 ## CI
 
-Typically sdcnode builds for all targetted images are built for each commit
-via Joyent Engineering's internal Jenkins CI system. See
-<https://jenkins.joyent.us/view/sdcnode/> (internal access). They are published
-to <https://download.joyent.com/pub/build/sdcnode/> (public).
+Typically sdcnode builds for all targetted images are built for each commit via
+the Triton Data Center Jenkins instance. See
+<https://jenkins.tritondatacenter.com/job/TritonDataCenter/job/sdcnode/>. They
+are published to <https://download.tritondatacenter.com/pub/build/sdcnode/>.
 
 ## Build configurations
 
@@ -34,7 +34,7 @@ are built. There are configurations for a matrix of the following variables:
 
 - node.js version
 
-- origin image, e.g. [minimal-multiarch](https://docs.joyent.com/public-cloud/instances/infrastructure/images/smartos/minimal), which implies a pkgsrc generation and sometimes the `gcc` version used
+- origin image, e.g. [minimal-64-lts](https://docs.tritondatacenter.com/public-cloud/instances/infrastructure/images/smartos/minimal), which implies a pkgsrc generation and sometimes the `gcc` version used
 
 - "build tag" for different build/configuration paramters:
 
@@ -66,7 +66,7 @@ Here are some commands to see a breakdown of current sdcnode configs:
 Here is a *start* at commands to list current usage of sdcnode configs by
 Triton and Manta components.
 
-1. Setup `jr` per <https://github.com/joyent/joyent-repos#jr>.
+1. Setup `jr` per <https://github.com/TritonDataCenter/joyent-repos#jr>.
 
 2. Get and update a clone of all top-level Triton/Manta release repos:
 
