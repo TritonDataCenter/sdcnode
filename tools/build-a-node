@@ -192,7 +192,7 @@ make ${JOBS_ARG} V=1 CC=$GCC CXX=$GXX \
 # node build needs to (a) include the needed GCC runtime libs and (b) set a
 # RUNPATH for the node binary to find them.
 #
-# See <https://github.com/joyent/rfd/tree/master/rfd/0059#problems-with-the-gz>
+# See <https://github.com/TritonDataCenter/rfd/tree/master/rfd/0059#problems-with-the-gz>
 # for details.
 includeGccRuntimeLibs=$(echo "$buildOpts" | json include_gcc_runtime_libs)
 if [[ -n "$includeGccRuntimeLibs" ]]; then
