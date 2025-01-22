@@ -97,7 +97,7 @@ pipeline {
                     }
                     steps {
                         sh('''
-./tools/build_jenkins -u 4dd8810e-10a8-49d1-b37b-1c4e32ed6c05 -p $MIN_PLATFORM_STAMP_NG
+./tools/build_jenkins -u 41bd4100-eb86-409a-85b0-e649aadf6f62 -p $MIN_PLATFORM_STAMP_NG
         ''')
                     }
                 }
