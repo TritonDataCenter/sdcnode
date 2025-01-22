@@ -1,5 +1,71 @@
 [
     {
+        "// image": "minimal-64-lts 24.4.1",
+        "image": "41bd4100-eb86-409a-85b0-e649aadf6f62",
+        "version": "v8.17.0",
+        "patch_files": [
+            "patches/dtrace-binutils241-v8.x.patch",
+            "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/tls-reload-certs-v8.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "gcc": "/opt/local/gcc13/bin/gcc",
+        "cflags": "-Wno-all -Wno-extra -Wno-deprecated-declarations -fno-aggressive-loop-optimizations",
+        "rpath": "$ORIGIN/../lib",
+        "include_gcc_runtime_libs": true,
+        "build_tag": "gz"
+    },
+    {
+        "// image": "minimal-64-lts 24.4.1",
+        "image": "41bd4100-eb86-409a-85b0-e649aadf6f62",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v8.17.0",
+        "patch_files": [
+            "patches/dtrace-binutils241-v8.x.patch",
+            "patches/http-keepAliveTimeout-default-0-v8.x.patch",
+            "patches/tls-reload-certs-v8.x.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "gcc": "/opt/local/gcc13/bin/gcc",
+        "cflags": "-Wno-all -Wno-extra -Wno-deprecated-declarations -fno-aggressive-loop-optimizations",
+        "build_tag": "zone64"
+    },
+    {
+        "// image": "minimal-64-lts 24.4.1",
+        "image": "41bd4100-eb86-409a-85b0-e649aadf6f62",
+        "version": "v6.17.1",
+        "patch_files": [
+            "patches/dtrace-binutils241-v8.x.patch",
+            "patches/http-keepAliveTimeout-default-0-v6.17+.patch",
+            "patches/tls-reload-certs-v6.x.patch",
+            "patches/v8-includes.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "gcc": "/opt/local/gcc13/bin/gcc",
+        "cflags": "-Wno-all -Wno-extra -Wno-deprecated-declarations -fno-aggressive-loop-optimizations",
+        "rpath": "$ORIGIN/../lib",
+        "include_gcc_runtime_libs": true,
+        "npm_version": "v6.4.1",
+        "build_tag": "gz"
+    },
+    {
+        "// image": "minimal-64-lts 24.4.1",
+        "image": "41bd4100-eb86-409a-85b0-e649aadf6f62",
+        "comment": "For use by services running in zones. Statically link to OpenSSL and zlib *for now* until OS-1294/TOOLS-130.",
+        "version": "v6.17.1",
+        "patch_files": [
+            "patches/dtrace-binutils241-v8.x.patch",
+            "patches/http-keepAliveTimeout-default-0-v6.17+.patch",
+            "patches/tls-reload-certs-v6.x.patch",
+            "patches/v8-includes.patch"
+        ],
+        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
+        "gcc": "/opt/local/gcc13/bin/gcc",
+        "cflags": "-Wno-all -Wno-extra -Wno-deprecated-declarations -fno-aggressive-loop-optimizations",
+        "npm_version": "v6.4.1",
+        "build_tag": "zone64"
+    },
+    {
         "// image": "minimal-64-lts 21.4.0",
         "image": "a7199134-7e94-11ec-be67-db6f482136c2",
         "version": "v8.17.0",

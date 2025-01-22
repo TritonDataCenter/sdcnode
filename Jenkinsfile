@@ -6,6 +6,7 @@
 
 /*
  * Copyright 2022 Joyent, Inc.
+ * Copyright 2025 MNX Cloud, Inc.
  */
 
 @Library('jenkins-joylib@v1.0.8') _
@@ -85,6 +86,18 @@ pipeline {
                     steps {
                         sh('''
 ./tools/build_jenkins -u a7199134-7e94-11ec-be67-db6f482136c2 -p $MIN_PLATFORM_STAMP_NG
+        ''')
+                    }
+                }
+                stage('minimal-64-lts 24.4.1') {
+                    agent {
+                        node {
+                            label joyCommonLabels(image_ver: '24.4.1', pi: '20210826T002459Z')
+                        }
+                    }
+                    steps {
+                        sh('''
+./tools/build_jenkins -u 4dd8810e-10a8-49d1-b37b-1c4e32ed6c05 -p $MIN_PLATFORM_STAMP_NG
         ''')
                     }
                 }

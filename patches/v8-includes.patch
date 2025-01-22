@@ -1,0 +1,14 @@
+../deps/v8_inspector/third_party/v8_inspector/platform/v8_inspector/String16STL.cpp:375:23: error: 'numeric_limits' is not a member of 'std'
+  375 |     if (length > std::numeric_limits<unsigned>::max() / 3)
+      |                       ^~~~~~~~~~~~~~
+
+--- a/deps/v8_inspector/third_party/v8_inspector/platform/v8_inspector/String16STL.cpp.orig	Mon Jan 20 12:58:53 2025
++++ b/deps/v8_inspector/third_party/v8_inspector/platform/v8_inspector/String16STL.cpp	Mon Jan 20 12:59:22 2025
+@@ -7,6 +7,7 @@
+ #include <algorithm>
+ #include <cctype>
+ #include <cstdio>
++#include <limits>
+ #include <locale>
+ 
+ namespace blink {

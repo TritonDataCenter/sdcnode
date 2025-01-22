@@ -6,7 +6,7 @@
 
 #
 # Copyright 2022 Joyent, Inc.
-# Copyright 2023 MNX Cloud, Inc.
+# Copyright 2025 MNX Cloud, Inc.
 #
 
 #
@@ -28,6 +28,11 @@ include ./deps/eng/tools/mk/Makefile.defs
 ifeq ($(shell $(_AWK) '/^Image/ {print $$3}' < /etc/product),21.4.0)
 BASE_IMAGE_UUID = a7199134-7e94-11ec-be67-db6f482136c2
 BUILD_PLATFORM  = 20210826T002459Z
+else
+ifeq ($(shell $(_AWK) '/^Image/ {print $$3}' < /etc/product),24.4.1)
+BASE_IMAGE_UUID = 4dd8810e-10a8-49d1-b37b-1c4e32ed6c05
+BUILD_PLATFORM  = 20210826T002459Z
+endif
 endif
 
 #
