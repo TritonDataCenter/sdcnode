@@ -198,6 +198,7 @@ includeGccRuntimeLibs=$(echo "$buildOpts" | json include_gcc_runtime_libs)
 if [[ -n "$includeGccRuntimeLibs" ]]; then
     ldd ./node  | awk '{print $3}' | grep '^/opt/local/gcc' | while read lib; do
         cp $lib $buildDir/node/lib/
+        $ELFEDIT -e 'dyn:runpath $ORIGIN' $buildDir/node/lib/$(basename $lib)
     done
 fi
 
