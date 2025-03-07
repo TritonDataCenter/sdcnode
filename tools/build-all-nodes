@@ -42,7 +42,11 @@ numConfigs=$(echo "$configs" | json length)
 for (( i=0; i<$numConfigs; i++ ))
 do
     nodeConfig=$(echo "$configs" | json $i)
-    nodeName=$(echo "$nodeConfig" | json version)-$(echo "$nodeConfig" | json build_tag) 
+    buildTag=$(echo "$nodeConfig" | json build_tag)
+    if [[ -n "$buildTag" ]]; then
+        buildTag="-$buildTag"
+    fi
+    nodeName=$(echo "$nodeConfig" | json version)${buildTag}
     nodeBuildDir=$buildDir/$nodeName
     if [[ ! -d $nodeBuildDir ]]; then
         $TOP/tools/build-a-node "$nodeConfig" $nodeBuildDir $buildStamp

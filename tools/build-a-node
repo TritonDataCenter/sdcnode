@@ -7,6 +7,7 @@
 
 #
 # Copyright 2021 Joyent, Inc.
+# Copyright 2025 MNX Cloud, Inc.
 #
 
 #
@@ -177,14 +178,13 @@ if [[ -z "$cflags" ]]; then
     cflags=""
 fi
 
-
 JOBS_ARG=
 if [[ -n ${MAKE_JOBS} ]]; then
     JOBS_ARG="-j${MAKE_JOBS}"
 fi
+
 make ${JOBS_ARG} V=1 CC=$GCC CXX=$GXX \
-     CFLAGS="${cflags}" CXXFLAGS="${cflags}"
-make V=1 CC=$GCC CXX=$GXX install
+     CFLAGS="${cflags}" CXXFLAGS="${cflags}" install
 
 # Optionally include GCC runtime libs. If a version of GCC was used to compile
 # node is greater than the version of the GCC runtime libs included in the
@@ -192,12 +192,13 @@ make V=1 CC=$GCC CXX=$GXX install
 # node build needs to (a) include the needed GCC runtime libs and (b) set a
 # RUNPATH for the node binary to find them.
 #
-# See <https://github.com/joyent/rfd/tree/master/rfd/0059#problems-with-the-gz>
+# See <https://github.com/TritonDataCenter/rfd/tree/master/rfd/0059#problems-with-the-gz>
 # for details.
 includeGccRuntimeLibs=$(echo "$buildOpts" | json include_gcc_runtime_libs)
 if [[ -n "$includeGccRuntimeLibs" ]]; then
     ldd ./node  | awk '{print $3}' | grep '^/opt/local/gcc' | while read lib; do
         cp $lib $buildDir/node/lib/
+        $ELFEDIT -e 'dyn:runpath $ORIGIN' $buildDir/node/lib/$(basename $lib)
     done
 fi
 

@@ -1,0 +1,24 @@
+The madvise() prototype changed in https://www.illumos.org/issues/14418 but we
+want to retain the ability to build on platforms both before and after the
+change.  Hardcoding one version of the prototype here is completely pointless,
+so just remove and use whatever the build host provides.
+
+diff --git a/deps/v8/src/base/platform/platform-posix.cc b/deps/v8/src/base/platform/platform-posix.cc
+index 517cbfccab..588830d062 100644
+--- a/deps/v8/src/base/platform/platform-posix.cc
++++ b/deps/v8/src/base/platform/platform-posix.cc
+@@ -72,14 +72,6 @@
+ #define MAP_ANONYMOUS MAP_ANON
+ #endif
+ 
+-#if defined(V8_OS_SOLARIS)
+-#if (defined(_POSIX_C_SOURCE) && _POSIX_C_SOURCE > 2) || defined(__EXTENSIONS__)
+-extern "C" int madvise(caddr_t, size_t, int);
+-#else
+-extern int madvise(caddr_t, size_t, int);
+-#endif
+-#endif
+-
+ #ifndef MADV_FREE
+ #define MADV_FREE MADV_DONTNEED
+ #endif
