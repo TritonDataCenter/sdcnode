@@ -10,7 +10,7 @@
         ],
         "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
         "gcc": "/opt/local/gcc13/bin/gcc",
-        "cflags": "-fno-aggressive-loop-optimizations -D__EXTENSIONS__",
+        "cflags": "-fno-aggressive-loop-optimizations",
         "rpath": "$ORIGIN/../lib",
         "include_gcc_runtime_libs": true
     },
