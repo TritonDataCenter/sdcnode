@@ -1,24 +1,38 @@
-The madvise() prototype changed in https://www.illumos.org/issues/14418 but we
-want to retain the ability to build on platforms both before and after the
-change.  Hardcoding one version of the prototype here is completely pointless,
-so just remove and use whatever the build host provides.
+From e1f935dbb3fc08ab45986f03d249dc1b85420086 Mon Sep 17 00:00:00 2001
+From: Dan McDonald <danmcd@mnx.io>
+Date: Mon, 7 Apr 2025 10:51:23 -0400
+Subject: [PATCH] deps: illumos madvise() pre-and-post-illumos#14418
+
+In illumos, madvise(3C) now takes `void *` for its first argument
+post-illumos#14418, but uses `caddr_t` pre-illumos#14418. This fix
+will detect if the illumos is pre-or-post-illumos#14418 so builds can
+work either way.
+---
+ deps/v8/src/base/platform/platform-posix.cc | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/deps/v8/src/base/platform/platform-posix.cc b/deps/v8/src/base/platform/platform-posix.cc
-index 517cbfccab..588830d062 100644
+index 2d351f67b93bdb..5c93b3aaafe34a 100644
 --- a/deps/v8/src/base/platform/platform-posix.cc
 +++ b/deps/v8/src/base/platform/platform-posix.cc
-@@ -72,14 +72,6 @@
+@@ -80,7 +80,19 @@
  #define MAP_ANONYMOUS MAP_ANON
  #endif
  
 -#if defined(V8_OS_SOLARIS)
--#if (defined(_POSIX_C_SOURCE) && _POSIX_C_SOURCE > 2) || defined(__EXTENSIONS__)
--extern "C" int madvise(caddr_t, size_t, int);
--#else
--extern int madvise(caddr_t, size_t, int);
--#endif
--#endif
--
- #ifndef MADV_FREE
- #define MADV_FREE MADV_DONTNEED
- #endif
++/*
++ * NOTE: illumos starting with illumos#14418 (pushed April 20th, 2022)
++ * prototypes madvise(3C) properly with a `void *` first argument.
++ * The only way to detect this outside of configure-time checking is to
++ * check for the existence of MEMCNTL_SHARED, which gets defined for the first
++ * time in illumos#14418 under the same circumstances save _STRICT_POSIX, which
++ * thankfully neither Solaris nor illumos builds of Node or V8 do.
++ *
++ * If some future illumos push changes the MEMCNTL_SHARED assumptions made
++ * above, the illumos check below will have to be revisited.  This check
++ * will work on both pre-and-post illumos#14418 illumos environments.
++ */
++#if defined(V8_OS_SOLARIS) && !(defined(__illumos__) && defined(MEMCNTL_SHARED))
+ #if (defined(_POSIX_C_SOURCE) && _POSIX_C_SOURCE > 2) || defined(__EXTENSIONS__)
+ extern "C" int madvise(caddr_t, size_t, int);
+ #else
