@@ -12,22 +12,7 @@
         "gcc": "/opt/local/gcc13/bin/gcc",
         "cflags": "-fno-aggressive-loop-optimizations",
         "rpath": "$ORIGIN/../lib",
-        "include_gcc_runtime_libs": true,
-        "build_tag": "gz"
-    },
-    {
-        "// image": "minimal-64-lts 24.4.1",
-        "image": "41bd4100-eb86-409a-85b0-e649aadf6f62",
-        "comment": "Unmodified, fully-relocatable build suitable for all environments.",
-        "version": "v18.20.6",
-        "patch_files": [
-            "patches/dtrace-binutils241-v18.patch",
-            "patches/v8-madvise.patch"
-        ],
-        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
-        "gcc": "/opt/local/gcc13/bin/gcc",
-        "cflags": "-fno-aggressive-loop-optimizations",
-        "build_tag": "zone64"
+        "include_gcc_runtime_libs": true
     },
     {
         "// image": "minimal-64-lts 24.4.1",
@@ -43,23 +28,7 @@
         "gcc": "/opt/local/gcc13/bin/gcc",
         "cflags": "-fno-aggressive-loop-optimizations",
         "rpath": "$ORIGIN/../lib",
-        "include_gcc_runtime_libs": true,
-        "build_tag": "gz"
-    },
-    {
-        "// image": "minimal-64-lts 24.4.1",
-        "image": "41bd4100-eb86-409a-85b0-e649aadf6f62",
-        "comment": "Modified, fully-relocatable build for agents that require historical behaviour.",
-        "version": "v8.17.0",
-        "patch_files": [
-            "patches/dtrace-binutils241-v8.x.patch",
-            "patches/http-keepAliveTimeout-default-0-v8.x.patch",
-            "patches/tls-reload-certs-v8.x.patch"
-        ],
-        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
-        "gcc": "/opt/local/gcc13/bin/gcc",
-        "cflags": "-fno-aggressive-loop-optimizations",
-        "build_tag": "zone64"
+        "include_gcc_runtime_libs": true
     },
     {
         "// image": "minimal-64-lts 24.4.1",
@@ -76,24 +45,7 @@
         "cflags": "-fno-aggressive-loop-optimizations",
         "rpath": "$ORIGIN/../lib",
         "include_gcc_runtime_libs": true,
-        "npm_version": "v6.4.1",
-        "build_tag": "gz"
-    },
-    {
-        "// image": "minimal-64-lts 24.4.1",
-        "image": "41bd4100-eb86-409a-85b0-e649aadf6f62",
-        "comment": "Modified, fully-relocatable build for agents that require historical behaviour.",
-        "version": "v6.17.1",
-        "patch_files": [
-            "patches/dtrace-binutils241-v8.x.patch",
-            "patches/http-keepAliveTimeout-default-0-v6.17+.patch",
-            "patches/tls-reload-certs-v6.x.patch"
-        ],
-        "configure_flags": "--without-snapshot --dest-cpu=x64 --with-dtrace",
-        "gcc": "/opt/local/gcc7/bin/gcc",
-        "cflags": "-fno-aggressive-loop-optimizations",
-        "npm_version": "v6.4.1",
-        "build_tag": "zone64"
+        "npm_version": "v6.4.1"
     },
     {
         "// image": "minimal-64-lts 21.4.0",
