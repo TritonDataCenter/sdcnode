@@ -18,7 +18,7 @@
 #   ./tools/build-a-node BUILD-OPTS BUILD-DIR BUILD-STAMP
 #
 # Example:
-#   ./tools/build-a-node '{"version": "v0.8.23}' \
+#   ./tools/build-a-node '{"version": "v0.8.23"}' \
 #       `pwd`/build/nodes/v0.8.23-zone \
 #       master-20130913T173257Z-gfb34f86
 #
